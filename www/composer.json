@@ -1,0 +1,17 @@
+{
+"name": "miga",
+  "description": "miga project",
+  "config": {
+    "preferred-install": "dist"
+  },
+  "require": {
+    "zendframework/zendframework": "2.5.3",
+    "zendframework/zend-developer-tools": "1.1.1",
+    "phpunit/phpunit": "5.7.15",
+    "behat/mink": "1.7.x-dev",
+    "behat/mink-selenium2-driver": "1.3.x-dev",
+    "behat/behat": "3.2.x-dev",
+    "behat/mink-goutte-driver": "1.2.x-dev"
+  }
+}
+

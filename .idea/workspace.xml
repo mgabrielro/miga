@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4f739eab-ca65-48ce-87ba-209dd27fd23d" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" phpInterpreterId="6ad4f9cf-49b4-4245-917d-32130270f7ee">
+    <pharConfigPath>$PROJECT_DIR$/www/composer.json</pharConfigPath>
+    <pharPath>C:\Users\mandu.gabriel\AppData\Local\ComposerSetup\bin\composer.phar</pharPath>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>exit</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/www/html/ausgabe.php" />
+        <option value="$PROJECT_DIR$/www/html/index.html" />
+        <option value="$PROJECT_DIR$/www/html/index.php" />
+        <option value="$PROJECT_DIR$/www/config/application.config.php" />
+        <option value="$PROJECT_DIR$/www/config/autoload/development.php" />
+        <option value="$PROJECT_DIR$/www/config/autoload/global.php" />
+        <option value="$PROJECT_DIR$/www/public/index.php" />
+        <option value="$PROJECT_DIR$/www/init_autoloader.php" />
+        <option value="$PROJECT_DIR$/www/composer.json" />
+        <option value="$PROJECT_DIR$/bootstrap.sh" />
+        <option value="$PROJECT_DIR$/www/.gitignore" />
+        <option value="$PROJECT_DIR$/Vagrantfile" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="192.168.33.10" id="ca296830-999c-4dc9-92fd-5c051e0317b5" name="192.168.33.10" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/www/html" remote-root="/var/www/html" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Remote PHP 5.6">
+    <include_path>
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-soap" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-http" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-hydrator" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-test" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-math" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-file" />
+      <path value="$PROJECT_DIR$/www/vendor/fabpot/goutte" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-escaper" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-modulemanager" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-debug" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-tag" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-paginator" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zendxml" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-version" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-memory" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-json" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-progressbar" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-server" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-stdlib" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-uri" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-barcode" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-permissions-rbac" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-cache" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-psr7bridge" />
+      <path value="$PROJECT_DIR$/www/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/www/vendor/instaclick/php-webdriver" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-navigation" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-i18n-resources" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-mail" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-permissions-acl" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-inputfilter" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-developer-tools" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-authentication" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-console" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-mime" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-loader" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-xmlrpc" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-servicemanager" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-crypt" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-config" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-form" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/class-loader" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-mvc" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-view" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-db" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-feed" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-dom" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-text" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-filter" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-log" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-serializer" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-session" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-i18n" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-validator" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zendframework" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-di" />
+      <path value="$PROJECT_DIR$/www/vendor/zendframework/zend-captcha" />
+      <path value="$PROJECT_DIR$/www/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/www/vendor/container-interop/container-interop" />
+      <path value="$PROJECT_DIR$/www/vendor/composer" />
+      <path value="$PROJECT_DIR$/www/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/www/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/www/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/www/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/www/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/www/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/mink-browserkit-driver" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/transliterator" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/mink" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/behat" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/mink-goutte-driver" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/mink-selenium2-driver" />
+      <path value="$PROJECT_DIR$/www/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/www/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/www/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/www/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/www/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/www/vendor/doctrine/instantiator" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1216" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miga" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miga" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="Z:/gkv/gkv-core" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="add_unversioned_files" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\miga\www" />
+      <recent name="D:\projects\miga\www\config\autoload" />
+      <recent name="D:\projects\learn\www\config\autoload" />
+      <recent name="D:\projects\learn\www\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\learn\www\public" />
+      <recent name="D:\projects\learn\www\html" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f739eab-ca65-48ce-87ba-209dd27fd23d" name="Default" comment="" />
+      <created>1487754933012</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1487754933012</updated>
+      <workItem from="1487754935432" duration="2361000" />
+      <workItem from="1487757344952" duration="35000" />
+      <workItem from="1487757780265" duration="358000" />
+      <workItem from="1488356676798" duration="1861000" />
+      <workItem from="1488358555775" duration="608000" />
+      <workItem from="1488360540728" duration="123000" />
+      <workItem from="1488871001167" duration="1955000" />
+      <workItem from="1488872966086" duration="2853000" />
+      <workItem from="1488888531856" duration="176000" />
+      <workItem from="1488888713700" duration="3863000" />
+      <workItem from="1488893217468" duration="700000" />
+      <workItem from="1488893924985" duration="1883000" />
+      <workItem from="1488981700729" duration="1298000" />
+      <workItem from="1489387170182" duration="6662000" />
+      <workItem from="1489394242942" duration="2339000" />
+      <workItem from="1489396635713" duration="512000" />
+      <workItem from="1489397234020" duration="7324000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="34911000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1216" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13432837" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6257089" sideWeight="0.50852877" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23720682" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21886793" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44234404" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21908316" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5482042" sideWeight="0.4914712" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4820416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4518868" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/www/public/index.php</url>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/composer.json" />
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/composer.json" />
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="file://$PROJECT_DIR$/www/html/ausgabe.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/PDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11662">
+          <caret line="686" column="20" lean-forward="false" selection-start-line="686" selection-start-column="20" selection-end-line="686" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="787" column="9" lean-forward="false" selection-start-line="787" selection-start-column="9" selection-end-line="787" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/autoload/local.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/autoload/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/autoload/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/application.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/init_autoloader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/autoload/development.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="e#11#559#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config/autoload/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1489402420206" expanded="true" signature="0:405" ph="{&quot;name&quot;: &quot;learn&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
