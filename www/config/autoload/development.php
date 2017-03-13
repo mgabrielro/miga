@@ -14,7 +14,7 @@
 
     if (php_sapi_name() == 'cli') {
         // @todo improve
-        $server_name = 'miga.de';
+        $server_name = 'miga-project.com';
     } else {
         $server_name = $_SERVER['SERVER_NAME'];
     }
@@ -22,7 +22,7 @@
     $project_root = realpath(getcwd() . '/../');
 
     // api host name
-    $api_host = 'miga.de';
+    $api_host = 'miga-project.com';
 
     // calculate cookie domain
     $cookie_domain = substr($server_name, strpos($server_name, '.'));
