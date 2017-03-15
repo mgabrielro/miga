@@ -50,8 +50,8 @@
       <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/module/Application/src/Application/Controller/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
                 <element signature="e#7#329#0#PHP" expanded="true" />
                 <element signature="e#366#415#0#PHP" expanded="true" />
@@ -66,8 +66,8 @@
             <state relative-caret-position="-5916">
               <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
               <folding>
-                <marker date="1489566685473" expanded="true" signature="52041:52058" ph="..." />
-                <marker date="1489566685473" expanded="true" signature="52041:52089" ph="..." />
+                <marker date="1489567089778" expanded="true" signature="52049:52066" ph="..." />
+                <marker date="1489567089778" expanded="true" signature="52049:52097" ph="..." />
               </folding>
             </state>
           </provider>
@@ -425,12 +425,12 @@
       <workItem from="1489407731706" duration="2005000" />
       <workItem from="1489409781181" duration="835000" />
       <workItem from="1489410634198" duration="388000" />
-      <workItem from="1489560249361" duration="5639000" />
+      <workItem from="1489560249361" duration="6412000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45083000" />
+    <option name="totallyTimeSpent" value="45856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1216" extended-state="6" />
@@ -837,8 +837,8 @@
         <state relative-caret-position="-5916">
           <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
           <folding>
-            <marker date="1489566685473" expanded="true" signature="52041:52058" ph="..." />
-            <marker date="1489566685473" expanded="true" signature="52041:52089" ph="..." />
+            <marker date="1489567089778" expanded="true" signature="52049:52066" ph="..." />
+            <marker date="1489567089778" expanded="true" signature="52049:52097" ph="..." />
           </folding>
         </state>
       </provider>
@@ -855,8 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/module/Application/src/Application/Controller/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="e#7#329#0#PHP" expanded="true" />
             <element signature="e#366#415#0#PHP" expanded="true" />
