@@ -1,7 +1,5 @@
 <?php
 
-    //echo '<pre>'; print_r($_SERVER); exit;
-
     /**
      * Display all errors when APPLICATION_ENV is development.
      */
