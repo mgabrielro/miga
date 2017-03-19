@@ -26,5 +26,21 @@
             'applications'        => array('Application'),
             'public_path'         => str_replace("/", DIRECTORY_SEPARATOR, getcwd()."/public/"),
             'error_layout'        => getcwd().'/module/Application/view/layout/main.phtml',
-        )
+        ),
+
+        'db' => array(
+            'driver'         => 'Pdo',
+            'dsn'            => 'mysql:dbname=core;host=localhost',
+            'driver_options' => array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+            ),
+        ),
+
+        'service_manager' => array(
+            'factories' => array(
+                'Zend\Db\Adapter\Adapter'
+                => 'Zend\Db\Adapter\AdapterServiceFactory',
+            ),
+        ),
+
     );

@@ -1,28 +1,27 @@
 <?php
 
-namespace Product;
+namespace Album;
 
 // Add these import statements:
-use Product\Model\Product;
-use Product\Model\ProductTable;
+use Album\Model\Album;
+use Album\Model\AlbumTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-    }
-
-    public function getConfig()
-    {
-        return include __DIR__ . '/config/module.config.php';
     }
 
     public function getAutoloaderConfig()
@@ -39,21 +38,26 @@ class Module
         );
     }
 
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
     // Add this method:
     public function getServiceConfig()
     {
         return array(
             'factories' => array(
-                'Product\Model\ProductTable' =>  function($sm) {
-                    $tableGateway = $sm->get('ProductTableGateway');
-                    $table        = new ProductTable($tableGateway);
+                'Album\Model\AlbumTable' =>  function($sm) {
+                    $tableGateway = $sm->get('AlbumTableGateway');
+                    $table = new AlbumTable($tableGateway);
                     return $table;
                 },
-                'ProductTableGateway' => function ($sm) {
-                    $dbAdapter          = $sm->get('Zend\Db\Adapter\Adapter');
+                'AlbumTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Product());
-                    return new TableGateway('product', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Album());
+                    return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

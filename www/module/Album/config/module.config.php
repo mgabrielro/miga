@@ -1,10 +1,9 @@
 <?php
 
 return array(
-
     'controllers' => array(
         'invokables' => array(
-            'Product\Controller\Product' => 'Product\Controller\ProductController',
+            'Album\Controller\Album' => 'Album\Controller\AlbumController',
         ),
     ),
 
@@ -16,22 +15,22 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Product\Controller\Product',
+                        'controller' => 'Album\Controller\Album',
                         'action'     => 'index',
                     ),
                 ),
             ),
 
-            'product' => array(
+            'album' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/product[/:action][/:id]',
+                    'route'    => '/album[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Product\Controller\Product',
+                        'controller' => 'Album\Controller\Album',
                         'action'     => 'index',
                     ),
                 ),
@@ -41,8 +40,7 @@ return array(
 
     'view_manager' => array(
         'template_path_stack' => array(
-            'product' => __DIR__ . '/../view',
+            'album' => __DIR__ . '/../view',
         ),
     ),
-
 );

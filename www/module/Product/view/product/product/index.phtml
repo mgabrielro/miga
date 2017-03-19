@@ -1,1 +1,42 @@
-<h1>Products</h1>
+<?php
+// module/Product/view/product/product/index.phtml:
+
+$title = 'My products';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('product', array('action'=>'add'));?>">Add new product</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Category id</th>
+        <th>Manufacturer id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($products as $product) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($product->category_id);?></td>
+            <td><?php echo $this->escapeHtml($product->manufacturer_id);?></td>
+            <td><?php echo $this->escapeHtml($product->name);?></td>
+            <td><?php echo $this->escapeHtml($product->description);?></td>
+            <td><?php echo $this->escapeHtml($product->size);?></td>
+            <td><?php echo $this->escapeHtml($product->color);?></td>
+            <td><?php echo $this->escapeHtml($product->created);?></td>
+            <td><?php echo $this->escapeHtml($product->updated);?></td>
+            <td>
+                <a href="<?php echo $this->url('product',
+                    array('action'=>'edit', 'id' => $product->id));?>">Edit</a>
+                <a href="<?php echo $this->url('product',
+                    array('action'=>'delete', 'id' => $product->id));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

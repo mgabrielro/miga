@@ -1,6 +1,6 @@
 # Project specifics
 ###################
-www/config/local.inc.php
+www/config/autoload/local.php
 www/logs/
 
 # Ignore vendor .git folders
