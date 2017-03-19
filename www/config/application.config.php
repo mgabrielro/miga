@@ -10,7 +10,8 @@
 $config = array(
 
     'modules' => array(
-        'Application'
+        'Application',
+        'Product'
     ),
 
     'module_listener_options' => array(
