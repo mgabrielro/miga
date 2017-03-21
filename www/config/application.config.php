@@ -14,9 +14,6 @@ $environment = getenv('APPLICATION_ENV');
 $modules = [
     'Album',
     'Application',
-    //'classes',
-    //'Common',
-    //'Mobile',
     'Product',
 ];
 
