@@ -1,0 +1,475 @@
+<?php
+
+if (empty($c24_customer_login_email)) {
+    $c24_customer_login_email = '';
+}
+
+if (empty($c24login_user_id)) {
+    $c24login_user_id = '';
+}
+
+if (empty($c24session)) {
+    $c24session = '';
+}
+
+$client = $this->layout()->client;
+$is_app = ($client->get_deviceoutput() == 'app');
+
+?>
+
+<input type="hidden" id="c24login_user_id_hidden" name="c24login_user_id_hidden" value="<?php echo $c24login_user_id; ?>">
+<input type="hidden" id="c24_customer_account_view" name="c24_customer_account_view" value="<?php echo $customer_account_view;?>">
+<input type="hidden" id="c24session_hidden" name="c24session_hidden" value="<?php echo $c24session;?>">
+<input type="hidden" id="deviceoutput_app" name="is_app" value="<?php echo $is_app? 'yes':'no' ?>">
+
+<?php /* Default View */ ?>
+
+<?php if (!$is_app || ($is_app && !$c24login_user_id)):?>
+<div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-header-bar-account-default" style="display: none">
+
+    <div class="c24-content-row-block c24-content-row-info" id="c24-header-bar-header-container">
+        <div class="c24-content-row-block">
+            <div class="c24-customer-account-title-logo">
+                <img src="/massets/images/customer_account/Kundenkonto_Pfeil_30.png"  alt="User Anmelden">
+            </div>
+            <div class="c24-customer-account-title-text" id="c24-customer-account-title-text">
+                <div class="c24-customer-account-title-header">Sie haben ein Konto?</div>
+                <div class="c24-customer-account-title-content">Anmelden und Zeit sparen</div>
+                <div>
+                    <?php
+                        if ($is_app) {
+                            $href='c24-app-login://' . $app_login_referrer;
+                        } else {
+                            $href="javascript:void(0);";
+                        }
+                    ?>
+
+                    <a class="c24-bluelink-normal c24-bluelink-login" id="c24-customer-account-default-login-link"
+                       href="<?php echo $href ?>">Anmelden</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php /* User logged in */ ?>
+<div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-customer-account-logged-in" style="display: none;">
+
+    <div class="c24-content-row-info" id="c24-customer-account-logged-in-header-container">
+        <div class="c24-content-row-block">
+            <div class="c24-customer-account-title-logo">
+                <img src="/massets/images/customer_account/Kundenkonto_Haeckchen_30.png"  alt="User eingeloggt">
+            </div>
+            <div class="c24-customer-account-title-text" >
+                <div class="c24-customer-account-title-black-header">Hallo <?php
+
+                        if (!empty($c24_customer_login_lastname)) {
+
+                            $mapgender = ['male' => 'Herr', 'female' => 'Frau'];
+
+                            if ($c24_customer_login_gender) {
+                                echo $mapgender[$c24_customer_login_gender] . ' ';
+                            }
+
+                            if($c24_customer_login_title) {
+                                echo $c24_customer_login_title . ' ';
+                            }
+
+                            echo $c24_customer_login_lastname;
+
+                        }
+
+                    ?></div>
+                <div class="c24-customer-account-title-content"><?php echo $c24_customer_login_email; ?></div>
+                <div class="c24-customer-account-logout-button">
+                    <a class="c24-bluelink-normal"  data-ajax="false" href="" id="c24-customer-account-login-logout-link" >Abmelden</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php /* Login View */ ?>
+<div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-header-bar-account-login" style="display: none;" >
+
+        <div class="c24-content-row c24-content-row-info " id="c24-customer-account-login-header-container">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-title-logo">
+                    <img src="/massets/images/customer_account/Kundenkonto_Pfeil_30.png"  alt="User einloggen" >
+                </div>
+                <div class="c24-customer-account-title-text">
+                    <div class="c24-customer-account-title-header">Sie haben ein Konto?</div>
+                    <div class="c24-customer-account-title-content">Anmelden und Zeit sparen</div>
+                </div>
+                <div class="c24-content-row-info-icon">
+                    <a class="c24-customer-account-header-close" id="c24-customer-account-login-header-close" style="display: block;">X</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row c24-content-row-info " id="c24-customer-account-login-email-container">
+            <div class="c24-content-row-block social">
+                <a href="javascript:void(0)" class="social-buttons facebook" data-href="<?php echo $social_buttons['facebook'] ?>">
+                    <div class="icon">
+                        <img src="/massets/images/Facebook-Login.svg">
+                    </div>
+                    <div class="button-wording">Facebook</div>
+                </a>
+                <a href="javascript:void(0)" class="social-buttons google" data-href="<?php echo $social_buttons['google'] ?>">
+                    <div class="icon">
+                        <img src="/massets/images/Google-Login.svg">
+                    </div>
+                    <div class="button-wording">Google</div>
+                </a>
+            </div>
+            <?php
+            if ($oauth_error['error']) {
+                ?>
+            <div class="c24-content-row-error">
+                <div class="c24-content-row-block-errorbox greenbackground">
+                    <?php echo $oauth_error['text'];?>
+                </div>
+            </div>
+            <?php
+            }
+                ?>
+            <div class="c24-content-row-block divinger">
+                <div class="social-divinger">
+                    <div class="social-divinger-wording">
+                        oder mit CHECK24 Konto
+                    </div>
+                </div>
+            </div>
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-input-content">
+                    <label for="register_email" class="c24-label">Meine E-Mail-Adresse ist</label>
+                    <div class="c24-form-input-row">
+                        <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                            <input type="email" name="c24_customer_login_email" class=" c24-form-text" id="c24_customer_login_email" placeholder="E-Mail-Adresse" data-headline="c24-customer-login-email-headline" value="<?php echo $c24_customer_login_email; ?>" autocomplete="off">
+                            <a class="c24-text-empty-icon ui-link" onclick="change_customer_view('default');" style="display: none;">X</a>
+                            <div class="c24-content-row-block-errorbox  greenbackground">
+                                Bitte geben Sie eine E-Mail-Adresse an
+                            </div>
+                        </div>
+                        <div class="c24-content-row-info-icon js-c24-info-icon">
+                            <div class="c24-info-icon">?</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c24-content-row-block-infobox">
+                    <div class="c24-content-row-info-text">
+                        <div class="c24-content-row-info-text-content">
+                            <strong>Welche Vorteile bietet das persönliche CHECK24 Kundenkonto?</strong><br/>
+                            <br/>
+                            <div><i class="fa fa-check c24-icon-green"></i> Einsicht Ihrer Abschlüsse</div>
+                            <div><i class="fa fa-check c24-icon-green"></i> Bei CHECK24 Vergleichen Zeit sparen</div>
+                            <div><i class="fa fa-check c24-icon-green"></i> Exclusive Angebote und Gutscheine</div>
+                            <br/>
+                            Im CHECK24 Kundenkonto können Sie Ihre Angebote und Abschlüsse einsehen sowie neue
+                            Vergleiche starten. Sie profitieren von exklusiven Angeboten und Gutscheinen.
+                            Mit Ihrer Anmeldung stimmen Sie den <a class="c24-bluelink-normal" href="https://kundenbereich.check24.de/terms.html" target="_blank">Nutzungsbedingungen</a> href  Ihres CHECK24 Kundenkontos zu.
+                        </div>
+                        <div class="c24-info-close-row">
+                            <i class="fa fa-angle-up"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row c24-content-row-info " id="c24-customer-account-password-container">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-input-content">
+                    <label for="login_password" class="c24-label">Mein CHECK24 Passwort ist</label>
+                    <div class="c24-form-input-row">
+                        <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                            <input type="password" name="c24_customer_login_password" maxlength="50"
+                                   class=" c24-form-text" id="c24_customer_login_password" placeholder="Passwort"
+                                   data-headline="c24-customer-login-password-headline" value="">
+                            <a class="c24-text-empty-icon ui-link" href="javascript:void(0);" style="display: none;">X</a>
+                            <div class="c24-content-row-block-errorbox  greenbackground">
+                                Bitte geben Sie ein Passwort an
+                            </div>
+                        </div>
+                        <div class="c24-content-row-info-icon js-c24-info-icon">
+                            <div class="c24-info-icon">?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="c24-content-row-block-infobox c24-content-row-block-infobox-underline">
+                <div class="c24-content-row-info-text">
+                    <div class="c24-content-row-info-text-content">
+                        Bitte geben Sie das Passwort ein, das Sie bei der Anmeldung für Ihr CHECK24 Kundenkonto angegeben haben.
+                    </div>
+                    <div class="c24-info-close-row">
+                        <i class="fa fa-angle-up"></i>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="c24-content-row-block">
+                <p class="c24-customer-account-text">
+                    <a class="c24-bluelink-normal" id="c24-customer-account-login-pwrecover-link" href="" >Passwort vergessen?</a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="c24-content-row-block">
+            <div>
+                <a type="button" id="c24-customer-account-login-button" class="c24-button-plain-blue"/>anmelden</a>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block c24-customer-account-register-block c24-customer-account-footer">
+            <p class="c24-customer-account-text">
+                Neu bei CHECK24? <a class="c24-login_row c24-user_register_row ui-link c24-bluelink-normal" id="c24-customer-account-login-register-link" href="">Jetzt registrieren</a>
+            </p>
+        </div>
+
+</div>
+
+<?php /* Register View */ ?>
+<div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-header-bar-account-register" style="display: none;">
+
+    <div class="c24-content-row c24-content-row-info " id="c24-customer-account-register-container">
+        <div class="c24-content-row-block">
+            <div class="c24-customer-account-title-logo">
+                <img src="/massets/images/customer_account/Kundenkonto_Pfeil_30.png"  alt="User anmelden">
+            </div>
+            <div class="c24-customer-account-title-text" >
+                <div class="c24-customer-account-title-header">Kundenkonto anlegen</div>
+                <div class="c24-customer-account-title-content">Sparen Sie Zeit</div>
+            </div>
+            <div class="c24-content-row-info-icon">
+                <a class="c24-customer-account-header-close" id="c24-customer-account-register-header-close" style="display: block;">X</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="c24-content-row c24-content-row-info " id="c24-customer-account-register-email-container">
+        <div class="c24-content-row-block">
+            <div class="c24-customer-account-input-content">
+                <label for="register_email" class="c24-label">Meine E-Mail-Adresse ist</label>
+                <div class="c24-form-input-row">
+                    <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                        <input type="email" name="c24_account_register_email" class=" c24-form-text" id="c24_account_register_email" placeholder="E-Mail-Adresse" data-headline="c24-text-email-headline" value="" autocomplete="off">                <a class="c24-text-empty-icon ui-link" href="javascript:void(0);" style="display: none;">X</a>
+                        <div class="c24-content-row-block-errorbox  greenbackground">
+                            Bitte geben Sie eine E-Mail-Adresse an
+                        </div>
+                    </div>
+                    <div class="c24-content-row-info-icon js-c24-info-icon">
+                        <div class="c24-info-icon">?</div>
+                    </div>
+                </div>
+            </div>
+            <div class="c24-content-row-block-infobox">
+                <div class="c24-content-row-info-text">
+                    <div class="c24-content-row-info-text-content">
+                        <strong>Welche Vorteile bietet das persönliche CHECK24 Kundenkonto?</strong><br />
+                        <br/>
+                        <ul class="fa-ul">
+                            <li><i class="fa-li fa fa-check c24-icon-green"></i> Einsicht Ihrer Abschlüsse</li>
+                            <li><i class="fa-li fa fa-check c24-icon-green"></i> Bei CHECK24 Vergleichen Zeit sparen</li>
+                            <li><i class="fa-li fa fa-check c24-icon-green"></i> Exclusive Angebote und Gutscheine</li>
+                        </ul>
+                        <br/>
+                        Im CHECK24 Kundenkonto können Sie Ihre Angebote und Abschlüsse einsehen sowie neue
+                        Vergleiche starten. Sie profitieren von exklusiven Angeboten und Gutscheinen.
+                        Mit Ihrer Anmeldung stimmen Sie den <a class="c24-bluelink-normal" href="https://kundenbereich.check24.de/terms.html" target="_blank">Nutzungsbedingungen</a> Ihres CHECK24 Kundenkontos zu.
+                    </div>
+                    <div class="c24-info-close-row">
+                        <i class="fa fa-angle-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="c24-content-row c24-content-row-info " id="c24-customer-account-register-password-container">
+        <div class="c24-content-row-block">
+            <div class="c24-customer-account-input-content">
+                <label for="register_password" class="c24-label">Wählen Sie ein Passwort</label>
+                <div class="c24-form-input-row">
+                    <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                        <input type="password" name="c24_account_register_password1" maxlength="50" class=" c24-form-text" id="c24_account_register_password1" placeholder="Passwort" data-headline="c24-password-password-headline" value="">
+                        <a class="c24-text-empty-icon ui-link" href="javascript:void(0);" style="display: none;">X</a>
+                        <div class="c24-content-row-block-errorbox  greenbackground">
+                            Bitte geben Sie ein Passwort an
+                        </div>
+                    </div>
+                    <div class="c24-content-row-info-icon js-c24-info-icon">
+                        <div class="c24-info-icon">?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block-infobox">
+            <div class="c24-content-row-info-text">
+                <div class="c24-content-row-info-text-content">
+                    <strong>Wichtig für sichere Passwörter</strong><br />
+                    <br/>
+                    <ul class="fa-ul">
+                        <li><i id="c24-pw-length" class="fa-li fa fa-close c24-icon-red"></i> 6 bis 50 Zeichen</li>
+                        <li><i id="c24-pw-mix" class="fa-li fa fa-close c24-icon-red"></i> Mischung aus Buchstaben, Ziffern und Symbolen</li>
+                        <li><i id="c24-pw-similar" class="fa-li fa fa-close c24-icon-red"></i> Keine Ähnlichkeit mit Ihrer E-Mail-Adresse</li>
+                        <li><i id="c24-pw-not-easy" class="fa-li fa fa-close c24-icon-red"></i> Nicht leicht zu erraten</li>
+                    </ul>
+                </div>
+                <div class="c24-info-close-row">
+                    <i class="fa fa-angle-up"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block">
+            <div id="pwd_check" style="position: relative; display: inline-block; top: 0px; padding-left: 5px; font-size: 84.6%;width:200px;">
+
+                Passwortstärke:
+
+                <span id="rs-pws-indicator-text"></span>
+
+                <div id="rs-pws-indicator-bar" style="width: 140px; margin-top: 4px; background-color: #CCC; height:4px; ">
+                    <div style="width: 50px; height:4px; display: block;"></div>
+                </div>
+                <input type="hidden" id="c24login_type_email_hidden">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="c24-content-row c24-content-row-info " id="c24-customer-account-register-password2-container">
+        <div class="c24-content-row-block">
+            <div class="c24-input-content c24-form-input-row">
+                <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                    <input type="password" name="c24_account_register_password2" maxlength="50" class=" c24-form-text" id="c24_account_register_password2" placeholder="Passwort wiederholen" data-headline="c24-password-password-headline" value="">
+                    <div class="c24-content-row-block-errorbox  greenbackground">
+                        Bitte geben Sie ein Passwort an
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="c24-content-row">
+        Mit Klick auf "jetzt registrieren" stimme ich den <a href="https://kundenbereich.check24.de/terms.html" target="_blank">Nutzungsbedingungen</a> des CHECK24-Kundenkontos sowie den <a href="https://www.check24.de/popup/datenschutz-check24-gmbh/" target="_blank">Datenschutzhinweisen</a> der CHECK24 GmbH in 80251 München zu.
+    </div>
+
+    <div class="c24-content-row-block">
+        <div>
+            <a type="button" id="c24-customer-account-register-button" class="c24-button-plain-blue">jetzt registrieren</a>
+        </div>
+    </div>
+
+    <div class="c24-content-row-block c24-customer-account-footer">
+        <p class="c24-customer-account-text">
+            Sie haben ein Konto? <a class="c24-login_row c24-user_register_row ui-link c24-bluelink-normal" href="" id="c24-customer-account-register-login-link">Anmelden</a>
+        </p>
+    </div>
+
+</div>
+
+<?php /* Passwort Recover View */ ?>
+    <div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-customer-account-pwrecover" style="display: none;">
+
+        <div class="c24-content-row c24-content-row-info c24-customer-account-pwrecover" id="c24-customer-account-pwrecover-header-container">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-title-logo">
+                    <img src="/massets/images/customer_account/Kundenkonto_Pfeil_30.png"  alt="Passwort zurücksetzen" >
+                </div>
+                <div class="c24-customer-account-title-text" >
+                    <div class="c24-customer-account-title-header">Passwort vergessen?</div>
+                </div>
+                <div class="c24-content-row-info-icon">
+                    <a class="c24-customer-account-header-close" id="c24-customer-account-pwrecover-close" style="display: block;">X</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row c24-content-row-info">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-content">Bitte geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link, um das Passwort zu erneuern.</div>
+            </div>
+        </div>
+
+        <div class="c24-content-row c24-content-row-info " id="c24-customer-account-pwrecover-email-container">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-input-content">
+                    <label for="register_email" class="c24-label">Meine E-Mail-Adresse ist</label>
+                    <div class="c24-form-input-row">
+                        <div class="ui-input-text ui-body-inherit ui-shadow-inset ui-input-has-clear has_info">
+                            <input type="email" name="c24_account_pwrecover_email" class=" c24-form-text" id="c24_account_pwrecover_email" placeholder="E-Mail-Adresse" data-headline="c24-text-email-headline" value="" autocomplete="off">
+                            <a class="c24-text-empty-icon ui-link" href="javascript:void(0);" style="display: none;">X</a>
+                            <div class="c24-content-row-block-errorbox greenbackground">
+                                Bitte geben Sie eine E-Mail-Adresse an
+                            </div>
+                        </div>
+                        <div class="c24-content-row-info-icon js-c24-info-icon">
+                            <div class="c24-info-icon">?</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c24-content-row-block-infobox">
+                    <div class="c24-content-row-info-text">
+                        <div class="c24-content-row-info-text-content">
+                            Um das vergessene Passwort zu ändern, müssen Sie die E-Mail-Adresse eingeben, die Sie bei der Anmeldung verwendet haben.
+                        </div>
+                        <div class="c24-info-close-row">
+                            <i class="fa fa-angle-up"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block">
+            <div>
+                <a type="button" id="c24-customer-account-pwrecover-button" class="c24-button-plain-blue"> senden </a>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block c24-customer-account-footer">
+            <p class="c24-customer-account-text">
+                Sie haben ein Konto? <a class="c24-login_row c24-user_register_row ui-link c24-bluelink-normal" href="" id="c24-customer-account-pwrecover-login-link">Anmelden</a>
+            </p>
+        </div>
+
+    </div>
+
+<?php /* E-Mail sent View */ ?>
+    <div class="c24-content-row-info c24-header-info c24-header-customer-account" id="c24-customer-account-emailsent" style="display: none;">
+
+        <div class="c24-content-row c24-content-row-info c24-customer-account-emailsent" id="c24-customer-account-emailsent-header-container">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-title-logo">
+                    <img src="/massets/images/customer_account/Kundenkonto_Pfeil_30.png"  alt="Passwort zurücksetzen">
+                </div>
+                <div class="c24-customer-account-title-text" >
+                    <div class="c24-customer-account-title-header">E-Mail wurde versendet</div>
+                </div>
+                <div class="c24-content-row-info-icon">
+                    <a class="c24-customer-account-header-close" id="c24-customer-account-emailsent-close" style="display: block;">X</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="c24-content-row c24-content-row-info">
+            <div class="c24-content-row-block">
+                <div class="c24-customer-account-content">Bitte klicken Sie auf den Link in Ihrer E-Mail und setzten Sie sich ein neues Passwort.</div>
+            </div>
+        </div>
+
+        <div class="c24-content-row-block">
+            <a class="c24-login_row c24-user_register_row ui-link c24-bluelink-normal" href="" id="c24-customer-account-emailsent-login-link" >Zurück zur Anmeldung</a>
+        </div>
+
+    </div>
+<?php endif; ?>

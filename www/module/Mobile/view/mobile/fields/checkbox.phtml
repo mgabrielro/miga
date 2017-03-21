@@ -1,0 +1,32 @@
+<?php $error_messages = $element->getMessages(); ?>
+
+<div class="c24-content-row ui-checkbox <?php if (!empty($help_info)) echo 'c24-content-row-info'; ?> <?php if (!empty($error_messages)) echo 'c24-content-row-error'; ?>" id="<?php echo htmlspecialchars($element->getName()); ?>_container" style="<?php if ($visible == false) echo 'display: none'; ?>">
+
+    <div class="c24-checkbox c24-content-row-block">
+
+        <div class="c24-checkbox-content <?php if (!empty($help_info)) echo 'c24-content-row-info-content'; ?>">
+
+            <?php echo $content; ?>
+            <label for="<?php echo $element->getName(); ?>"><?php echo $label; ?></label>
+
+            <?php if (!empty($help_info)): ?>
+                <div class="c24-content-row-info-icon js-c24-info-icon">
+                    <div class="c24-info-icon">?</div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+
+    <?php
+
+        if (!empty($help_info)) {
+            echo $this->partial('includes/helpinfo.phtml', ['help_info_content' => $help_info['content'], 'help_info_hint' => $hint]);
+        }
+
+        echo $this->partial('includes/errorinfo.phtml', ['error_messages' => $error_messages]);
+
+    ?>
+
+</div>

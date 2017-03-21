@@ -1,0 +1,288 @@
+<?php
+
+$is_child = ($this->layout()->insured_person == 'child') ? true : false;
+$child_age_text = ($this->layout()->children_age == 1) ? '1 Jahr' : $this->layout()->children_age . ' Jahre';
+
+$birthday_content = 'Die angezeigten Tarife und Preise beziehen sich auf das eingegebene Geburtsdatum
+                    '.$this->form->get('birthdate')->getValue().'.<br/><br/>
+                    Sie können das Geburtsdatum ändern, indem Sie mit einem anderen Geburtsdatum neu vergleichen.<br/><br/>
+                    <a class="c24-button-plain-blue c24-button-online full_button ui-link" id="input1-birthday" href="' . $this->layout()->home_link . '" data-ajax="false">neu vergleichen</a>';
+
+$bithday_child_content = 'Das Alter des Kindes haben Sie bereits zu Beginn des Vergleiches eingegeben.
+                          Die angezeigten Tarife und Beiträge beziehen sich auf dieses Alter.
+                          Sie können jedoch das Alter ändern, wenn Sie
+                          <a class="ui-link" id="input1-birthday" href="' . $this->layout()->home_link . '" data-ajax="false">erneut vergleichen</a>.';
+
+echo $this->form()->openTag($form);
+
+echo $this->form->render($this->form->generate_hidden_field('c24login_type', 'Anmeldetyp', ['value' => $c24login_type], false));
+echo $this->form->render($this->form->generate_select_field('send_confirmation_offline', ''));
+
+// include the customer_account template (for the moment we don't needed, but in the future - PVPKV-1312)
+echo $this->partial('mobile/register/includes/customer_account.phtml'); ?>
+
+<div class="c24-form-start">
+
+    <div class="c24-form-secure-transfer">
+        <img src="/massets/images/icons/secure_transfer.png">
+    </div>
+
+    <?php if (count($this->form->getMessages()) > 0) : ?>
+        <div class="c24-form-element-group">
+            <div class="c24-form-error" style="display: block">
+                <div class="c24-form-error-icon">!</div>
+                <div id="c24-register-error-headline-sso-login" class="c24-form-error-message">
+                    Bitte beachten Sie die Fehlermeldungen.
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <span class="c24-register-infotext c24-header_register">
+        <?php if($this->layout()->subscriptiontype == 'offer') : ?>
+            Wohin dürfen wir Ihr Angebot senden?
+        <?php else: ?>
+            Ihre Kontaktdaten für eine persönliche Beratung durch einen CHECK24-Experten
+        <?php endif; ?>
+    </span>
+
+
+    <div class="c24-form-element-group c24-insure_own_row">
+        <?php echo $this->form->render($this->form->generate_radio_list('insure', 'Wen möchten Sie versichern?', [], true, ['content' => 'Sie können sich selbst, aber auch Ihren Partner, Ihr Kind oder eine andere Person versichern.'])); ?>
+        <?php echo $this->form->render($this->form->generate_radio_list('insureaddressdiffers', 'Wen möchten Sie versichern?', ['value' => 'no'], false, ['content' => '...'])); ?>
+    </div>
+
+    <div id="insure_person" style="display: none;">
+
+        <input type="hidden" id="insured_person_type" name="insured_person_type" value="<?=$this->layout()->insured_person?>">
+        <input type="hidden" id="children_age" name="children_age" value="<?=$this->layout()->children_age?>">
+
+        <span class="c24-register-infotext"><?php echo ($is_child) ? 'Angaben zum Kind, welches Sie versichern möchten' : 'Angaben versicherte Person'; ?></span>
+
+        <div class="c24-form-element-group">
+
+            <div class="c24-clearfix c24-twocolumn-select-info c24-register-row-prefill">
+
+                <div class="c24-twocolumn-input-row c24-clearfix">
+                    <div class="c24-twocolumn-input">
+
+                        <div class="c24-register-field-50">
+                            <?php echo $this->form->render($this->form->generate_select_field('insure_gender', 'Anrede', ['data-placeholder'=> 'Anrede', 'label_class' => ' js-c24-block-label-top '], true)); ?>
+                        </div>
+
+                        <?php if(!$is_child) : ?>
+                            <div class="c24-register-field-50 c24-register-field-last" style="padding-left: 0;">
+                                <?php echo $this->form->render($this->form->generate_select_field('insure_title', 'Titel', ['data-placeholder'=> 'Titel', 'label_class' => ' js-c24-block-label-top '], true)); ?>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+
+                <?php echo $this->partial('mobile/fields/includes/helpinfo.phtml', ['help_info_content' => 'Bitte wählen Sie Anrede und gegebenenfalls einen akademischen Titel aus.']); ?>
+
+            </div>
+
+            <?php echo $this->form->render($this->form->generate_text_field('insure_firstname', 'Vorname', ['class' => 'hide_info'], true, [])); ?>
+            <?php echo $this->form->render($this->form->generate_text_field('insure_lastname',  'Nachname', ['class' => 'hide_info'], true, [])); ?>
+
+            <?php if($is_child) : ?>
+                <?php echo $this->form->render($this->form->generate_date_field('birthdate', 'Alter des Kindes', ['value' => $child_age_text, 'readonly' => 'readonly'], true, ['content' => $bithday_child_content ])); ?>
+            <?php else: ?>
+                <?php echo $this->form->render($this->form->generate_date_field('birthdate', 'Geburtsdatum', ['readonly' => 'readonly'], true, ['content' => $birthday_content ])); ?>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+
+
+    <input type="hidden" id="switched_from_bestsso_to_form" name="switched_from_bestsso_to_form" value="<?php echo $switched_from_bestsso_to_form ?>" />
+    <input id="use_sso_data" type="hidden" name="use_sso_data" value="<?php echo $address_data_complete ?  1 : 0; ?>" />
+
+    <div id="formCustomerNew" <?php if($address_data_complete): ?> class="sso-prefilled" <?php endif; ?> >
+
+        <span class="c24-register-infotext form-header-text">Ihre Angaben</span>
+
+        <?php if ($address_data_complete): ?>
+
+            <div class="c24-form-element-group">
+
+                <div class="c24-content-row c24-content-row-info c24-register-row c24-register-row-prefill c24-register-row-sso-data">
+                    <div class="c24-content-row-block">
+                        <div class="c24-content-row-info-content c24-input-content">
+                            <div class="best-sso-data ui-input-text has_info">
+
+                                <span class="sso-user-fullname">
+                                    <?php if(!empty($user_data['title'])): ?>
+                                        <?php echo ucwords($user_data['title']); ?>
+                                    <?php endif; ?>
+                                    <?php echo $user_data['firstname'] .' '. $user_data['surname']; ?>
+                                </span><br />
+
+                                <div class="sso-common-data">
+                                    <div class="sso-common-data-content">
+
+                                        <?php if ($user_data['prefixmobile'] && $user_data['mobile']): ?>
+                                            <?php echo $user_data['prefixmobile'] .'-'. $user_data['mobile']; ?>
+                                        <?php else: ?>
+                                            <?php echo $user_data['prefixphone'] .'-'. $user_data['phone']; ?>
+                                        <?php endif; ?>
+                                        <br />
+
+                                        <?php echo $user_data['email']; ?>
+                                        <br />
+
+                                        <span id="sso_prefilled_birthdate">
+                                            <?php echo date("d.m.Y", strtotime($user_data['birthday'])) ?>
+                                        </span>
+                                    </div>
+
+                                    <div class="sso-common-data-trigger">
+                                        <a class="toggle_sso_prefilled">ändern</a>
+                                    </div>
+
+                                    <div class="c24-content-row-info-icon js-c24-info-icon">
+                                        <div id="best-sso-info" class="c24-info-icon info-icon">?</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c24-content-row-block-infobox">
+                        <div class="c24-content-row-info-text">
+                            <div class="c24-content-row-info-text-content">
+                                Diese Angaben sind in Ihrem persönlichem CHECK24 Kundenkonto hinterlegt.
+                            </div>
+                            <div class="c24-info-close-row">
+                                <i class="fa fa-angle-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+
+        <div class="c24-form-element-group c24-register-row-data">
+
+            <div class="c24-clearfix c24-register-row c24-twocolumn-select-info c24-insure_own_row">
+                <div class="c24-twocolumn-input-row c24-clearfix">
+                    <div class="c24-twocolumn-input">
+                        <div class="c24-register-field-50">
+                            <?php echo $this->form->render($this->form->generate_select_field('gender', 'Anrede', ['data-placeholder'=> 'Anrede', 'label_class' => ' js-c24-block-label-top '], true)); ?>
+                        </div>
+                        <div class="c24-register-field-50 c24-register-field-last" style="padding-left: 0;">
+                            <?php echo $this->form->render($this->form->generate_select_field('title', 'Titel', ['data-placeholder'=> 'Titel', 'label_class' => ' js-c24-block-label-top '], true)); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->partial('mobile/fields/includes/helpinfo.phtml', ['help_info_content' => 'Bitte wählen Sie Anrede und gegebenenfalls einen akademischen Titel aus.']); ?>
+            </div>
+
+            <div class="c24-clearfix c24-register-row c24-insure_own_row">
+                <?php echo $this->form->render($this->form->generate_text_field('firstname', 'Vorname', ['class' => 'hide_info'], true, [])); ?>
+            </div>
+
+            <div class="c24-clearfix c24-register-row c24-insure_own_row">
+                <?php echo $this->form->render($this->form->generate_text_field('lastname',  'Nachname', ['class' => 'hide_info'], true, [])); ?>
+            </div>
+
+            <?php if(!$is_child) : ?>
+                <div class="c24-clearfix c24-register-row c24-insure_own_row c24-insure_other_hide_row">
+                    <?php echo $this->form->render($this->form->generate_date_field('birthdate', 'Geburtsdatum', ['readonly' => 'readonly'], true, [ 'content' => $birthday_content ])); ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="c24-clearfix c24-register-row c24-insure_own_row">
+                <?php echo $this->form->render($this->form->generate_tel_field('phone', 'Mobilnummer', ['maxlength' => 30], true, ['content' => 'Bitte geben Sie Ihre Telefonnummer (am besten Mobilnummer) an, unter der Sie unsere PKV-Experten für eine Beratung gut erreichen können.'])); ?>
+            </div>
+
+            <?php $email_div_id = ($customer_account_view == 'user_logged_in' ? 'logged-in' : 'logged-out'); ?>
+            <div class="c24-clearfix c24-register-row c24-insure_own_row c24-login_row" id="c24-customer-account-<?php echo $email_div_id; ?>-email">
+                <?php echo $this->form->render($this->form->generate_email_field('email', 'E-Mail-Adresse', ['value' => $c24_customer_login_email], true, ['content' => 'Bitte verwenden Sie eine E-Mail-Adresse, die Sie regelmäßig abrufen. Ihre Daten werden nicht an Dritte weitergegeben.'])); ?>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="c24-form-element-group">
+
+        <div class="c24-clearfix c24-register-row c24-insure_own_row c24-register-row-prefill">
+            <?php $agree_tel_contact_text = 'Ich bin einverstanden, dass mich ein CHECK24-Experte telefonisch kontaktiert. CHECK24 ist rechtlich zur Beratung verpflichtet.
+            <ul class="register_ul">
+                <li><img src="/massets/images/styleguide/check_green_12.png">
+                   Keine Datenweitergabe an Dritte
+                </li>
+                <li><img src="/massets/images/styleguide/check_green_12.png">
+                    Einwilligung jederzeit widerrufbar</li></ul>'?>
+
+            <?php echo $this->form->render($this->form->generate_checkbox_field('agreed_tel_contact', $agree_tel_contact_text, ['class' => 'hide_info'], true, [])); ?>
+
+        </div>
+
+        <?php
+
+
+        echo $this->form->render($this->form->generate_hidden_field('customdata_refresh', 'CHECK24 Kundenbereich aktualisieren?', ['value' => 'no'], false));
+        ?>
+
+        <div style="margin-bottom: 40px;" class="c24-insure_own_row c24-register-row c24-register-row-prefill">
+            Mit Klick auf "<?php if($this->layout()->subscriptiontype == 'offer') : ?>Angebot anfordern<?php else : ?>Beratung anfordern<?php endif;?>" bestätige ich die Kenntnisnahme der
+            <a class="document-link" onclick="window.open(this.href, 'popup', 'width=580,height=360,scrollbars=yes,toolbar=no,status=no,resizable=yes,menubar=no,location=no,directories=no,top=10,left=10');return false;" target="popup" style="text-decoration: underline;" data-nav="false" href="https://versicherungen.check24.de/datenschutz-agb/versicherungen/agb/">AGB</a> der CHECK24 Vergleichsportal für Versicherungsprodukte GmbH in 80251 München.
+        </div>
+
+        <?php if (isset($user_data['new_terms_confirmed']) && $user_data['new_terms_confirmed'] == 'no'): ?>
+
+            <div style="margin-bottom: 40px;" class="c24-insure_own_row c24-register-row c24-register-row-prefill new_terms">
+                Ihr CHECK24 Kundenkonto wird noch besser <br /><br />
+                Um alle Vorteile des CHECK24 Kundenkontos nutzen zu können,
+                stimme ich mit Klick auf „<?php if($this->layout()->subscriptiontype == 'offer') : ?>Angebot anfordern<?php else : ?>Beratung anfordern<?php endif;?>” der Übertragung meines Kundenkontos
+                auf die CHECK24 GmbH in 80251 München als neuen Vertragspartner zu.
+                Weiter stimme ich den neuen <a class="document-link" onclick="window.open(this.href, 'popup', 'width=580,height=360,scrollbars=yes,toolbar=no,status=no,resizable=yes,menubar=no,location=no,directories=no,top=10,left=10');return false;" target="popup" data-nav="false" href="https://kundenbereich.check24.de/terms.html">Nutzungsbedingungen</a> sowie den <a class="document-link" onclick="window.open(this.href, 'popup', 'width=580,height=360,scrollbars=yes,toolbar=no,status=no,resizable=yes,menubar=no,location=no,directories=no,top=10,left=10');return false;" target="popup" data-nav="false" href="https://www.check24.de/popup/datenschutz-check24-gmbh/">Datenschutzhinweisen</a>
+                der CHECK24 GmbH zu.
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+
+    <div class="c24-form-element-group ">
+        <a  class="c24-button-plain-blue c24-button-online full_button" id="request_offer" href="#" data-ajax="false">
+            <?php if($this->layout()->subscriptiontype == 'offer') : ?>
+                Angebot anfordern
+            <?php else: ?>
+                Beratung anfordern
+            <?php endif; ?>
+        </a>
+    </div>
+
+    <div class="c24-form-element-group c24-form-buttons">
+        <div  class="c24-form-element-center c24-insure_own_row">
+            <div class="c24-form-transfer-text">
+                <img src="/massets/images/styleguide/check_green_12.png">
+                <?php if($this->layout()->subscriptiontype == 'offer') : ?>
+                    Kostenfrei & unverbindlich
+                <?php else: ?>
+                    Kostenfrei & unverbindlich vom PKV-Experten zurückrufen lassen
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php echo $this->form()->closeTag(); ?>
+
+<script type="text/javascript">
+
+    var c24login_type = '<?php echo $login_type; ?>';
+    var login_urls = JSON.parse('<?php echo json_encode($login); ?>');
+
+</script>

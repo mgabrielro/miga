@@ -1,0 +1,49 @@
+<?php
+$secondary_tariff = $this->secondary_tariff;
+$tariff = $this->tariff;
+$backdated_months = $this->backdated_months;
+?>
+
+<div class="row-column column_price">
+    <?php if ($secondary_tariff && $this->lifetime_savings > 0): ?>
+        <div class="tariff_price_secondary">
+            <?php echo number_format($secondary_tariff->get_paymentperiod_size(), 2, ',', '.') . ' &euro;'; ?>
+        </div>
+        <div class="tariff_price tariff_price_primary">
+            <?php echo number_format($tariff->get_paymentperiod_size(), 2, ',', '.') . ' &euro;'; ?>
+        </div>
+        <p>
+            <?php echo $tariff->get_paymentperiod_label_adjectiv(); ?>
+        </p>
+
+        <span class="tariff_saving">
+            <span class="c24-tooltip" data-direction="up" data-direction-overwrite='{"tabletapp" : "right"}' data-trigger="click">
+                <?php echo $this->lifetime_savings; ?> € sparen
+                <div class="info_circle"></div>
+
+                <span class="c24-tooltip-content">
+                <div class="c24-tooltip-arrow up"></div>
+                <div class="c24-tooltip-close"></div>
+                    <h2>Gesamtersparnis</h2>
+                    <p>
+                        Wenn Sie sich für einen früheren Versicherungsbeginn (<?php echo $this->insure_date; ?>)
+                        entscheiden, können Sie über die gesamte
+                        Laufzeit <?php echo $this->lifetime_savings; ?> € sparen.
+                    </p>
+                    <p>
+                        Das Versicherungsende verschiebt sich um
+                        <?php echo $backdated_months; ?> <?php echo ($backdated_months > 1) ? ' Monate' : ' Monat' ?> nach
+                        vorne.
+                    </p>
+                </span>
+            </span>
+        </span>
+    <?php else: ?>
+        <span class="tariff_price">
+            <?php echo number_format($tariff->get_paymentperiod_size(), 2, ',', '.') . ' &euro;'; ?>
+        </span>
+        <p><?php echo $tariff->get_paymentperiod_label_adjectiv(); ?></p>
+    <?php endif; ?>
+
+    <?php echo $this->pointplan_helper->render('small'); ?>
+</div>

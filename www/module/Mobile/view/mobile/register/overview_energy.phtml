@@ -1,0 +1,760 @@
+<?php
+
+    if ($subscriptiontype == 'offline') {
+        echo $this->form()->openTag($form);
+        echo $this->form->render($this->form->generate_hidden_field('agree'));
+    }
+
+?>
+
+<div class="c24-form-start" id="c24-register-overview">
+
+    <div class="c24-form-element-group">
+
+        <?php if ($subscriptiontype == 'offline'): ?>
+
+        <div class="c24-content-row agb_click_info">
+            <div class="c24-checkbox c24-clearfix c24-content-row-block">
+                <div class="c24-checkbox-content">
+                    Mit Klick auf "Angebot anfordern" bestätige ich die Kenntnisnahme der <a href="http://vergleich.check24.de/app/form/agb_energy.html?style=check24-bluegrey&amp;pid=24&amp;tid=CH24_E_Website" target="_blank" class="c24-color">AGB</a> der CHECK24 Vergleichsportal Energie GmbH. Die Leistungen von CHECK24 sind selbstverständlich kostenlos.
+                </div>
+            </div>
+        </div>
+
+        <?php endif; ?>
+
+        <span class="c24-register-infotext">Zusammenfassung Ihrer Angaben</span>
+
+        <div class="c24-register-overview-container">
+
+            <span class="c24-register-overview-headline">
+                Lieferadresse
+                <?php
+
+                     if ($lead->get_bill_diff_address() == 'yes') {
+                        echo ' und Rechnungsadresse';
+                     }
+
+                 ?>
+
+            </span>
+
+            <div class="c24-register-overview-group c24-clearfix" style="margin-bottom: 0px;">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span><b>Lieferadresse</b></span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+
+                        if ($lead->get_gender() == 'company') {
+                            echo htmlspecialchars($lead->get_company()) . '<br>';
+                        } else {
+                            echo htmlspecialchars($lead->get_gender_f()) . ' ';
+                        }
+
+                        if ($lead->get_title() != '') {
+                            echo htmlspecialchars($lead->get_title()) . ' ';
+                        }
+
+                        echo htmlspecialchars($lead->get_firstname());
+                        echo ' ';
+                        echo htmlspecialchars($lead->get_lastname());
+                        echo '<br>';
+
+                        if ($lead->get_addressextra() != '') {
+                            echo htmlspecialchars($lead->get_addressextra());
+                            echo '<br>';
+                        }
+
+                        echo htmlspecialchars($lead->get_street());
+                        echo ' ';
+                        echo htmlspecialchars($lead->get_streetnumber());
+                        echo '<br>';
+
+                        echo htmlspecialchars($lead->get_zipcode());
+                        echo ' ';
+                        echo htmlspecialchars($lead->get_city());
+                        echo '<br>';
+
+
+
+                    ?>
+                </div>
+
+
+                <div class="c24-clearfix">
+
+                    <div class="c24-register-ovewview-group-title">
+                        <span>Tel.</span>
+                    </div>
+
+                    <div class="c24-register-ovewview-group-content">
+                        <?php
+                        echo htmlspecialchars($lead->get_phoneprefix() . ' ' . $lead->get_phone());
+                        ?>
+                    </div>
+
+                </div>
+
+                <div class="c24-clearfix">
+
+                    <div class="c24-register-ovewview-group-title">
+                        <span>E-Mail-Adresse</span>
+                    </div>
+
+                    <div class="c24-register-ovewview-group-content">
+                        <?php
+                        echo htmlspecialchars($lead->get_email());
+                        ?>
+                    </div>
+
+                </div>
+
+                <div class="c24-clearfix">
+
+                    <div class="c24-register-ovewview-group-title">
+                        <span>Geburtstag</span>
+                    </div>
+
+                    <div class="c24-register-ovewview-group-content">
+                        <?php
+                        echo htmlspecialchars($lead->get_birthdate_day() . '.' . $lead->get_birthdate_month() . '.' . $lead->get_birthdate_year());
+                        ?>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <?php
+
+            if ($lead->get_bill_diff_address() == 'yes') {
+                ?>
+
+                <div class="c24-register-ovewview-group-title" style="margin-top: 15px;">
+                    <span><b>Rechnungsadresse</b></span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content" style="margin-top: 15px;">
+
+                    <?php
+
+                    if ($lead->get_bill_gender() == 'company') {
+                        echo htmlspecialchars($lead->get_bill_company()) . '<br>';
+                    } else {
+                        echo htmlspecialchars($lead->get_bill_gender_f()) . ' ';
+                    }
+
+                    if ($lead->get_bill_title() != '') {
+                        echo htmlspecialchars($lead->get_bill_title()) . ' ';
+                    }
+
+                    echo htmlspecialchars($lead->get_bill_firstname());
+                    echo ' ';
+                    echo htmlspecialchars($lead->get_bill_lastname());
+                    echo '<br>';
+
+                    if ($lead->get_bill_addressextra() != '') {
+                        echo htmlspecialchars($lead->get_bill_addressextra());
+                        echo '<br>';
+                    }
+
+                    echo htmlspecialchars($lead->get_bill_street());
+                    echo ' ';
+                    echo htmlspecialchars($lead->get_bill_streetnumber());
+                    echo '<br>';
+
+                    echo htmlspecialchars($lead->get_bill_zipcode());
+                    echo ' ';
+                    echo htmlspecialchars($lead->get_bill_city());
+                    echo '<br>';
+
+                    ?>
+
+                </div>
+
+                <?php
+                    if ($lead->get_bill_phoneprefix() != '') {
+                    ?>
+
+                        <div class="c24-clearfix">
+
+                            <div class="c24-register-ovewview-group-title">
+                                <span>Tel.</span>
+                            </div>
+
+                            <div class="c24-register-ovewview-group-content">
+                                <?php
+                                echo htmlspecialchars($lead->get_bill_phoneprefix() . ' ' . $lead->get_bill_phone());
+                                ?>
+                            </div>
+
+                        </div>
+
+                    <?php
+                    }
+
+                    if ($lead->get_bill_email() != '') {
+                    ?>
+
+                        <div class="c24-clearfix">
+
+                            <div class="c24-register-ovewview-group-title">
+                                <span>E-Mail-Adresse</span>
+                            </div>
+
+                            <div class="c24-register-ovewview-group-content">
+                                <?php
+                                echo htmlspecialchars($lead->get_bill_email());
+                                ?>
+                            </div>
+
+                        </div>
+
+                    <?php
+                    }
+
+                    if ($lead->get_bill_birthdate() != '') {
+                    ?>
+
+                        <div class="c24-clearfix">
+
+                            <div class="c24-register-ovewview-group-title">
+                                <span>Geburtstag</span>
+                            </div>
+
+                            <div class="c24-register-ovewview-group-content">
+                                <?php
+                                echo htmlspecialchars($lead->get_bill_birthdate_day() . '.' . $lead->get_bill_birthdate_month() . '.' . $lead->get_bill_birthdate_year());
+                                ?>
+                            </div>
+
+                        </div>
+
+                    <?php
+
+                    }
+
+            }
+
+            ?>
+            <br>
+            <a class="c24-register-overview-change-link c24-color" href="<?php echo htmlspecialchars($link_step_address); ?>">Adressdaten ändern</a>
+
+        </div>
+
+        <?php
+            if ($lead->get_status_id() == 2 || $lead->get_status_id() == 20) :
+        ?>
+
+        <div class="c24-register-overview-container">
+
+            <span class="c24-register-overview-headline">
+                Zahlungsdaten
+            </span>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Zahlungsart</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_paymenttype_f());
+                    ?>
+                </div>
+
+            </div>
+
+
+            <?php
+                if ($lead->get_accountowner_firstname() != '') {
+            ?>
+
+                    <div class="c24-clearfix">
+
+                        <div class="c24-register-ovewview-group-title">
+                            <span>Kontoinhaber</span>
+                        </div>
+
+                        <div class="c24-register-ovewview-group-content">
+                            <?php
+                            echo htmlspecialchars($lead->get_accountowner_gender_f() . ' ' .  $lead->get_accountowner_firstname() . ' ' . $lead->get_accountowner_lastname());
+                            ?>
+                        </div>
+
+                    </div>
+
+            <?php
+                }
+            ?>
+
+
+
+
+            <?php
+                if ($lead->get_accountowner_street() != '') {
+            ?>
+
+                <div class="c24-clearfix">
+
+                    <div class="c24-register-ovewview-group-title">
+                        <span>Adresse</span>
+                    </div>
+
+                    <div class="c24-register-ovewview-group-content">
+                        <?php
+                        echo htmlspecialchars($lead->get_accountowner_street() . ' ' .  $lead->get_accountowner_steet_number());
+                        ?>
+                        <br>
+                        <?php
+                        echo htmlspecialchars($lead->get_accountowner_zipcode() . ' ' .  $lead->get_accountowner_city());
+                        ?>
+                    </div>
+
+                </div>
+
+            <?php
+
+                }
+
+                if ($lead->get_accountowner_email() != '') {
+            ?>
+                <div class="c24-clearfix">
+
+                    <div class="c24-register-ovewview-group-title">
+                        <span>E-Mail-Adresse</span>
+                    </div>
+
+                    <div class="c24-register-ovewview-group-content">
+                        <?php
+                        echo htmlspecialchars($lead->get_accountowner_email());
+                        ?>
+                    </div>
+
+                </div>
+            <?php
+                }
+
+            ?>
+
+
+
+
+            <?php
+                if ($lead->get_paymenttype() == 'directdebit') {
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Kontonummer</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_accountnumber());
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Bankleitzahl</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_bankcode());
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>IBAN</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                    echo htmlspecialchars($lead->get_iban());
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="c24-register-overview-group c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Bank</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_bank());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+                }
+            ?>
+
+            <a class="c24-register-overview-change-link c24-color" href="<?php echo htmlspecialchars($link_step_bank); ?>">Zahlungsdaten ändern</a>
+
+        </div>
+
+        <div class="c24-register-overview-container">
+
+            <span class="c24-register-overview-headline">
+                Anschlussdaten
+            </span>
+
+            <?php
+                if ($lead->get_provider() != '' && $lead->get_movein() == 'no') :
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Anbieter</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_provider());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_movein() == 'yes') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Neueinzug zum</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars(date('d.m.Y', strtotime($lead->get_movein_date())));
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_customernumber() != '') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Kundennummer</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_customernumber());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_counter_number() != '') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Zählernummer</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_counter_number());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_persons() > 0) :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Personen im Haushalt</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_persons());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_counter_reading() != '') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Zählerstand</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars($lead->get_counter_reading());
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_counter_date() != '') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Ablesedatum</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars(date('d.m.Y', strtotime($lead->get_counter_date())));
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_cancelation_self() == 'yes') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Gekündigt zum</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars(date('d.m.Y', strtotime($lead->get_cancelation_date())));
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+
+                endif;
+
+                if ($lead->get_delivery_self() == 'yes') :
+
+            ?>
+
+            <div class="c24-clearfix">
+
+                <div class="c24-register-ovewview-group-title">
+                    <span>Wunschtermin neuer Versorger</span>
+                </div>
+
+                <div class="c24-register-ovewview-group-content">
+                    <?php
+                        echo htmlspecialchars(date('d.m.Y', strtotime($lead->get_delivery_date())));
+                    ?>
+                </div>
+
+            </div>
+
+            <?php
+                endif;
+            ?>
+
+            <a class="c24-register-overview-change-link c24-color" href="<?php echo htmlspecialchars($link_step_energy_detail); ?>">Anschlussdaten ändern</a>
+
+        </div>
+
+        <?php
+            endif;
+        ?>
+
+        </div>
+
+        <div class="c24-form-element-center">
+            <?php if ($subscriptiontype == 'offline'): ?>
+                <input type="submit" class="c24-button-plain-blue full_button" value="Angebot anfordern">
+            <?php else: ?>
+                <a class="c24-button-plain-blue full_button" id="c24_submit_button" href="<?php echo htmlspecialchars($form->getAttribute('action')); ?>?agree=yes">Kauf abschließen</a>
+            <?php endif; ?>
+        </div>
+
+        <div class="c24-form-element-group">
+
+
+        <div class="c24-register-overview-container">
+
+            <span class="c24-register-overview-headline">
+                Tarifdetails
+            </span>
+
+            <div class="c24-register-overview-group c24-clearfix">
+                <strong>
+                    <?php
+
+                        echo htmlspecialchars($registertariff->get_provider_name()) . '<br>';
+
+                        if ($registertariff->get_provider_brand() != '') {
+                            echo '(Marke der ' . htmlspecialchars($registertariff->get_provider_brand()) . ')<br>';
+                        }
+
+                        echo htmlspecialchars($registertariff->get_tariff_name());
+
+                        if (isset($household_protection_letter) && $household_protection_letter == true) {
+                            echo ' + Haushaltsschutzbrief';
+                        }
+
+                        echo '<br>';
+
+                        if (isset($household_protection_letter) && $household_protection_letter == true) {
+                            echo '<span style="font-weight: normal;">Inkl. Haushaltsschutzbrief für 0 € im ersten Versicherungsjahr; anschließend 5,99 €/Monat.</span> <br/>';
+                        }
+
+                    ?>
+                </strong>
+            </div>
+
+            <?php
+
+                for ($i = 0, $i_max = count($tariff_infos); $i < $i_max; ++$i) {
+
+                    echo '<div class="c24-clearfix">
+
+                            <div class="c24-register-ovewview-group-title">
+                                <span>' . htmlspecialchars($tariff_infos[$i]['label']) . '</span>
+                            </div>
+
+                            <div class="c24-register-ovewview-group-content">
+                                ' . htmlspecialchars($tariff_infos[$i]['value']) . '
+                            </div>
+
+                        </div>
+                    ';
+
+                }
+
+            ?>
+
+        </div>
+
+        <div class="c24-register-overview-container">
+
+            <span class="c24-register-overview-headline">
+                Preisdetails
+            </span>
+
+            <?php
+
+                echo $price_details;
+
+            ?>
+
+            <br>
+
+        </div>
+
+
+        <div class="c24-register-overview-container">
+
+            <div class="c24-register-overview-group c24-clearfix">
+                <span>Sofern nicht ausdrücklich anders ausgewiesen beinhalten alle Preise die gesetzl. MwSt.</span>
+            </div>
+
+            <div class="c24-register-overview-group c24-clearfix">
+                <strong>Die Leistungen von CHECK24 sind selbstverständlich kostenlos.</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="c24-form-element-center">
+        <?php
+
+            if ($subscriptiontype == 'offline') {
+                echo '<input type="submit" class="c24-button-plain-blue full_button" value="Angebot anfordern">';
+            } else {
+                echo '<a class="c24-button-plain-blue full_button" id="c24_submit_button" href="' . htmlspecialchars($form->getAttribute('action')) . '?agree=yes">Kauf abschließen</a>';
+            }
+
+        ?>
+    </div>
+
+</div>
+
+<?php
+    if ($subscriptiontype == 'offline') {
+?>
+
+<div id="c24-important-field-info">
+    * Pflichtfeld
+</div>
+<?php
+        echo $this->form()->closeTag($form);
+
+    } else {
+
+
+    }
+
+    echo $generaltracking_pixel;

@@ -1,0 +1,81 @@
+<?php $error_messages = $element->getMessages(); ?>
+
+<div class="c24-content-row ui-radio <?php if (!empty($help_info)) echo 'c24-content-row-info'; ?> <?php if (!empty($error_messages)) echo 'c24-content-row-error'; ?> clearfix" id="<?php echo htmlspecialchars($element->getName()); ?>_container" style="<?php if ($visible == false) echo 'display: none'; ?>">
+
+    <div class="c24-content-row-block">
+
+        <label><?php echo $label; ?></label>
+
+        <div class="<?php if (!empty($help_info)) { echo 'c24-content-row-info-content'; } ?> c24-input-content">
+
+            <!--<div class="js-c24-block-label-top"></div>-->
+
+
+            <?php
+
+                $options = $element->getOptions();
+
+                $css_class_postfix = '';
+
+                for ($i = 0, $i_max = count($options['options']); $i < $i_max; ++$i) {
+                    $css_class_postfix .= $options['options'][$i]['value'];
+                }
+
+            ?>
+
+            <div class="c24-switch-container  c24-filter-container-<?php echo $css_class_postfix; ?>">
+
+                <input type="hidden" value="<?php echo $element->getValue(); ?>" id="<?php echo htmlspecialchars($element->getName()); ?>_input" name="<?php echo htmlspecialchars($element->getName()); ?>">
+
+                <div class="c24-filter-fieldset c24-filter-radio-<?php echo $css_class_postfix; ?>" id="<?php echo htmlspecialchars($element->getName()); ?>_switch_container">
+
+                    <?php for ($i = 0, $i_max = count($options['options']); $i < $i_max; ++$i): ?>
+
+                        <?php
+
+                            $div_classes = 'c24-switch';
+
+                            if ($i == 0) {
+                                $div_classes .= ' switch-left';
+                            } else {
+                                $div_classes .= ' switch-right';
+                            }
+
+                            if ($element->getValue() == $options['options'][$i]['value']) {
+                                $div_classes .= ' switch-active';
+                            }
+
+                        ?>
+
+                        <div id="c24-switch-<?php echo htmlspecialchars($element->getName()); ?>-<?php echo $options['options'][$i]['value']; ?>" data-name="<?php echo htmlspecialchars($element->getName()); ?>" data-value="<?php echo $options['options'][$i]['value']; ?>" class="<?php echo $div_classes; ?>">
+                            <div class="c24-switch-panel-icon <?php if ($element->getValue() == $options['options'][$i]['value']) echo 'icon-active'; ?>"><span></span></div>
+                            <span class="c24-switch-panel-text"><?php echo $options['options'][$i]['label'] ?></span>
+                        </div>
+
+                    <?php endfor; ?>
+
+                </div>
+
+            </div>
+
+            <?php if (!empty($help_info)): ?>
+                <div class="c24-content-row-info-icon js-c24-info-icon">
+                    <div class="c24-info-icon">?</div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+
+    <?php
+
+        if (!empty($help_info)) {
+            echo $this->partial('includes/helpinfo.phtml', ['help_info_content' => $help_info['content'], 'help_info_hint' => $hint]);
+        }
+
+        echo $this->partial('includes/errorinfo.phtml', ['error_messages' => $error_messages]);
+
+    ?>
+
+</div>

@@ -1,0 +1,97 @@
+<?php if (isset($this->layout()->tariff)) : ?>
+
+    <?php $tariff_grade_helper = new \classes\calculation\client\controller\helper\generate_tariffgrade_pkv($this->layout()->tariff); ?>
+    <?php $tariff_grade_helper->set_calculation_parameter_id($this->layout()->calculation_parameter_id); ?>
+
+    <?php $promotion = ($this->layout()->tariff->is_promo_tariff(true)); ?>
+    <?php $promotion_class = ($promotion) ? 'c24-promo-div' : ''; ?>
+
+
+    <div class="c24_tariff-overview tarif-register <?php echo $promotion_class;?>">
+
+        <div class="row" style="display:  block;">
+
+            <div class="c24-result-top-row c24-clearfix">
+
+                <?php if ($promotion) : ?>
+
+                    <?php $promotion_title = $this->layout()->tariff->get_tariff_promotion_bin($this->profession); ?>
+
+                    <div class="c24-promo-banner c24-clearfix">
+                        <div class="c24-result-promo-tip">
+                            <?php echo $promotion_title; ?>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+                
+                <?php if ($this->is_employee && !$this->is_child): ?>
+                <div class="c24-tariff-overview-left">
+                    <?php else: ?>
+                    <div class="c24-tariff-overview-left bottom-not-employee">
+                        <?php endif; ?>
+                   <?php echo $this->render('default/pv/tariffinformation.phtml'); ?>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--
+        <div class="c24-result-top-row c24-clearfix c24-link">
+            <div class="c24-tariff-overview-left">
+                <div class="c24-result-tariff-header">
+                    <div class="c24-result-tariff-logo">
+                        <img src="<?php echo $this->layout()->tariff->get_provider_logo(); ?>"
+                             alt="<?php echo $this->layout()->tariff->get_provider_comparename(); ?>">
+                    </div>
+                    <p class="c24-result-tariff-name">
+                        <?php
+                        // TODO: Logic in ein ViewHelper Auslagern (Refactoring Ticket: PVPKV-1431)
+                        $out = '';
+                        $arr = explode(',', $this->layout()->tariff->get_tariff_name());
+                        $count_tariff_names = count($arr);
+
+                        for ($i=0; $i < $count_tariff_names; $i++) {
+                            $out .= $arr[$i] . PHP_EOL;
+                        }
+                        echo $out;
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="c24-tariff-overview-right">
+                <div class="price">
+                <span class="c24-result-price">
+                    <?php echo number_format($this->layout()->tariff->get_paymentperiod_size(), 2, ',', '.') . ' &euro;'; ?>
+                </span>
+                    <span class="c24-result-saving">monatlich</span>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <?php
+
+        // show the tariff special action
+        $current_tariff = NULL;
+
+        if (!empty($tariff)) {
+            $current_tariff = $tariff;
+        } elseif (!empty($this->tariff)) {
+            $current_tariff = $this->tariff;
+        }
+
+        if (empty($special_action_hide_ribbon)) {
+            $special_action_hide_ribbon = NULL;
+        }
+
+        echo $this->partial('/common/special_action.phtml', ['tariff' => $current_tariff,
+            'special_action_hide_ribbon' => $special_action_hide_ribbon]);
+
+        ?>
+
+    </div>
+
+<?php endif; ?>

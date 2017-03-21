@@ -1,0 +1,22 @@
+<?php
+
+    if (isset($result_head)) {
+        echo $result_head;
+    }
+
+    if (isset($result_header_filter)) {
+        echo $result_header_filter;
+    }
+
+    if (isset($result)) {
+        echo $result;
+    }
+
+    if (isset($result_footer)) {
+        echo $result_footer;
+    }
+
+    echo $generaltracking->pixel->render();
+    echo $generaltracking->action->render();
+    echo $this->piwik($this->piwik['page'], $this->piwik['vars']);
+    echo $this->google_tag_manager($this->piwik['page']);

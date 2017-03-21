@@ -1,0 +1,45 @@
+<?php
+    $options = $element->getValueOptions();
+    $error_messages = $element->getMessages();
+    $info_width_class = 'has_info';
+
+    if (empty($help_info['content'])) {
+        $info_width_class = '';
+    }
+?>
+
+<div class="c24-content-row c24-select-container <?php echo (!empty($help_info['content']))? 'c24-content-row-info' : 'c24-content-row-noinfo'; ?> <?php if (!empty($error_messages)) echo 'c24-content-row-error'; ?> c24-clearfix" id="<?php echo htmlspecialchars($element->getName()); ?>_container" style="<?php if ($visible == false) echo 'display: none'; ?>">
+
+    <div class="c24-content-row-block">
+
+        <label id="<?php echo $element->getAttribute('data-headline'); ?>" for="<?php echo htmlspecialchars($element->getName()); ?>" class="<?php if (!empty($element->getAttributes()['label_class'])) echo $element->getAttributes()['label_class']; ?> c24-label <?php if ($element->getValue() != '') { echo 'c24-input-title-visible'; } ?>">
+            <?php echo $label; ?>
+        </label>
+
+        <div class="<?php if (!empty($help_info)) { echo 'c24-content-row-info-content'; } ?> c24-select">
+
+
+            <?php echo $content; ?>
+
+            <?php if (!empty($help_info['content'])): ?>
+                <div class="c24-content-row-info-icon js-c24-info-icon">
+                    <div class="c24-info-icon">?</div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+
+    </div>
+
+    <?php
+
+        if (!empty($help_info)) {
+            echo $this->partial('includes/helpinfo.phtml', ['help_info_content' => $help_info['content'], 'help_info_hint' => $hint]);
+        }
+
+        echo $this->partial('includes/errorinfo.phtml', ['error_messages' => $error_messages]);
+
+    ?>
+
+</div>

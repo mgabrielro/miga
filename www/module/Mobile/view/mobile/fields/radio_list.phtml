@@ -1,0 +1,64 @@
+<?php
+    $error_messages = $element->getMessages();
+    $options = $element->getValueOptions();
+    if (!empty($element->getAttributes()['description'])) {
+        $description = $element->getAttributes()['description'];
+    }
+?>
+
+<div class="c24-content-row ui-radio-list c24-field-radiolist <?php if (!empty($help_info)) echo 'c24-content-row-info'; ?> <?php if (!empty($error_messages)) echo 'c24-content-row-error'; ?> clearfix" id="<?php echo htmlspecialchars($element->getName()); ?>_container" style="<?php if ($visible == false) echo 'display: none'; ?>">
+
+    <div class="c24-content-row-block">
+
+        <label><?php echo $label; ?></label>
+
+        <div class="<?php if (!empty($help_info)) { echo 'c24-content-row-info-content'; } ?> c24-input-content">
+
+            <!--<div class="js-c24-block-label-top"></div>-->
+
+            <div class="c24-switch-container">
+
+                <input type="hidden" value="<?php echo $element->getValue(); ?>" id="<?php echo htmlspecialchars($element->getName()); ?>_input" name="<?php echo htmlspecialchars($element->getName()); ?>">
+
+                <div class="c24-filter-fieldset" id="<?php echo htmlspecialchars($element->getName()); ?>_switch_container">
+
+                    <?php foreach ($options as $value => $label): ?>
+
+                        <div id="c24-switch-<?php echo htmlspecialchars($element->getName()); ?>-<?php echo $value; ?>" data-name="<?php echo htmlspecialchars($element->getName()); ?>" data-value="<?php echo $value; ?>" class="c24-switch c24-clearfix <?php if ($element->getValue() == $value) echo 'switch-active'; ?>">
+
+                           <div class="c24-switch-panel-icon <?php if ($element->getValue() == $value) echo 'icon-active'; ?>"><span></span></div>
+                            <div class="c24-switch-panel-text"><?php echo $label; ?></div>
+                            <?php if (isset($description)) :
+                                if (isset($description[$value])) {
+                                    echo '<div class="radio_list_description">' . $description[$value] . '</div>';
+                                }
+                            endif; ?>
+                        </div>
+
+                    <?php endforeach; ?>
+
+                </div>
+
+            </div>
+
+            <?php if (!empty($help_info)): ?>
+                <div class="c24-content-row-info-icon js-c24-info-icon">
+                    <div class="c24-info-icon">?</div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+
+    <?php
+
+    if (!empty($help_info)) {
+        echo $this->partial('includes/helpinfo.phtml', ['help_info_content' => $help_info['content'], 'help_info_hint' => $hint]);
+    }
+
+    echo $this->partial('includes/errorinfo.phtml', ['error_messages' => $error_messages]);
+
+    ?>
+
+</div>

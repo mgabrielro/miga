@@ -1,0 +1,33 @@
+<?php
+/**
+ * Tariff Grade Partial
+ * 
+ * @var \classes\calculation\mclient\model\parameter\pkv    $this->parameter
+ * @var \classes\calculation\mclient\model\tariff\pkv       $this->tariff
+ */
+$tariff_grade_helper = new \classes\calculation\client\controller\helper\generate_tariffgrade_pkv($this->tariff, $this->parameter->get_id());
+$tariff_grade_helper->set_calculation_parameter_id($this->parameter->get_id());
+
+$grade_text = $tariff_grade_helper->get_grade_description($this->tariff->get_tariff_grade_result());
+$class = $tariff_grade_helper->get_grade_text_class();
+
+if ($this->tariff->is_gold_grade()):
+?>
+    <div class="grade golden c24-tooltip-trigger">
+<?php else : ?>
+    <div class="grade c24-tooltip-trigger">
+<?php endif;?>
+        <span class="gradeNumber"><?php echo number_format((float)$this->tariff->get_tariff_grade_result(), 1, ',', NULL);?></span>
+        <span class="tarifflabel">Tarifnote</span>
+        <span class="gradeText <?php echo $class;?>">
+            <?php
+
+            if ($this->tariff->is_gold_grade()) {
+                echo 'Testsieger';
+            } else {
+                echo $grade_text;
+            }
+
+            ?>
+        </span>
+    </div>

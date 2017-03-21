@@ -2,7 +2,6 @@
 
     if (php_sapi_name() == 'cli') {
         $server_name = 'cli.c24';
-
     } else {
         $server_name = $_SERVER['SERVER_NAME'];
     }
@@ -19,13 +18,16 @@
      * file.
      */
     return array(
+
         'miga' => array(
+
             'environment'         => getenv('APPLICATION_ENV'),
             'logs_dir'            => str_replace("/", DIRECTORY_SEPARATOR, getcwd()."/logs/"),
             'current_application' => 'Application',
             'applications'        => array('Application'),
             'public_path'         => str_replace("/", DIRECTORY_SEPARATOR, getcwd()."/public/"),
             'error_layout'        => getcwd().'/module/Application/view/layout/main.phtml',
+
         ),
 
         'db' => array(
@@ -38,8 +40,7 @@
 
         'service_manager' => array(
             'factories' => array(
-                'Zend\Db\Adapter\Adapter'
-                => 'Zend\Db\Adapter\AdapterServiceFactory',
+                'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
             ),
         ),
 

@@ -1,7 +1,9 @@
 # Project specifics
 ###################
-www/config/autoload/local.php
+
 www/logs/
+bootstrap.sh
+Vagrantfile
 
 # Ignore vendor .git folders
 ############################

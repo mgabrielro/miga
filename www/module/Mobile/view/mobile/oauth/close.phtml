@@ -1,0 +1,11 @@
+<?php if (!empty($this->callback)): ?>
+<p>Bitte einen Moment warten...</p>
+<p>Falls dieses Popup sich nicht schließt, schließen Sie dieses Popup und laden Sie die Seite neu.</p>
+
+<script type="text/javascript">
+    window.opener.location = '<?php echo $this->callback; ?>';
+    window.close();
+</script>
+<?php else: ?>
+<p>Bitte schließen Sie dieses Popup und laden Sie die Seite neu.</p>
+<?php endif; ?>

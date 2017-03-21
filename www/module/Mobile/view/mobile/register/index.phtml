@@ -1,0 +1,22 @@
+<div id="c24-register">
+    <?php  
+        echo $this->partial('mobile/register/' . $step_view, $step_data);
+    ?>
+
+</div>
+<?php
+
+    echo $generaltracking->pixel->render();
+    echo $generaltracking->action->render();
+
+    if (!$step_view == 'converted.phtml') {
+
+        echo $this->piwik($this->piwik['page'], $this->piwik['vars']);
+        echo $this->google_tag_manager($this->gtm_page);
+
+    } else {
+
+        echo $this->piwik($this->page, $this->vars);
+        echo $this->google_tag_manager($this->gtm_page, $this->email_md5);
+
+    }

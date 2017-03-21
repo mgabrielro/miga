@@ -1,0 +1,106 @@
+<div>
+    <span><?php $this->output($this->area['title']); ?></span>
+    <div class="c24-tooltip" data-direction="right" data-trigger="click">
+        <div class="info_circle"></div>
+        <div class="c24-tooltip-content">
+            <div class="c24-tooltip-arrow up right"></div>
+            <div class="c24-tooltip-close" style=""></div>
+            <h3><?php $this->output(isset($this->area['help_title']) ? $this->area['help_title'] : $this->area['title']); ?></h3>
+            <p style="font-weight:normal;"><?php $this->output($this->area['help'], false); ?></p>
+        </div>
+    </div>
+</div>
+
+<?php foreach($this->tariffs as $key => $tariff): ?>
+<?php $class = $tariff->get_tariff_version_id().'-'.$tariff->get_tariff_variation_key(); ?>
+    <div class="<?php $this->output($class) ?> <?php $this->output(!in_array($class, $this->selected_keys) ? 'hide' : '') ?>"><?php
+
+        // print icon and text
+        if($this->area['type'] === 'icon_text')
+        {
+            $this->output($this->helper->compare_icon($tariff->{$this->area['method']}(), isset($this->area['icon_default']) ? $this->area['icon_default'] : null), false);
+            if(isset($this->area['mapping'])) {
+                $this->output($this->area['mapping'][$tariff->{$this->area['method']}()]);
+            } else {
+                $this->output($tariff->{$this->area['method']}());
+            }
+        }
+
+        // print icon only
+        else if($this->area['type'] === 'icon') {
+            $this->output($this->helper->compare_icon($tariff->{$this->area['method']}()), false);
+        }
+
+
+        // print icon only
+        else if($this->area['type'] === 'tariff_note') {
+            $this->output($this->helper->compare_note($tariff), false);
+        }
+
+        // print icon only
+        else if($this->area['type'] === 'customer_feedback') {
+            $this->output($this->helper->compare_feedback($tariff), false);
+        }
+
+        // print percent value
+        else if($this->area['type'] === 'percent') {
+            $this->output(number_format($tariff->{$this->area['method']}(), 2, ',', '.').' %');
+        }
+
+        // print special dynamic range
+        else if($this->area['type'] === 'dynamic_range')
+        {
+            if ($tariff->get_dynamic_min() == 0 && $tariff->get_dynamic_max() == 0) {
+                $this->output(isset($this->area['no_dynamic']) ? $this->area['no_dynamic'] : '');
+            } else if ($tariff->get_dynamic_min() == $tariff->get_dynamic_max()) {
+                $this->output($tariff->get_dynamic_max() . ' %');
+            } else {
+                $this->output($tariff->get_dynamic_min() . ' - ' . $tariff->get_dynamic_max() . ' %');
+            }
+        }
+
+        // print special leisure_risks
+        else if($this->area['type'] === 'leisure_risks')
+        {
+            $this->output($tariff->{$this->area['key']}() == 'yes' ? $this->area['default'] : $tariff->{$this->area['key'] . '_comment'}());
+        }
+
+        // print attachments
+        else if($this->area['type'] === 'attachments')
+        {
+            $attachment = $tariff->{$this->area['method']}();
+            if($attachment['terms']) {
+                $this->output($this->helper->compare_popup_link('Allgemeine Versicherungsbedingungen', $attachment['terms'], "document-link pdf-icon"), false);
+            }
+
+            if($attachment['terms_extra']) {
+                $this->output($this->helper->compare_popup_link('Besondere Versicherungsbedingungen', $attachment['terms_extra'], "document-link pdf-icon"), false);
+            }
+        }
+
+        // print special additional_medical_examination
+        else if($this->area['type'] === 'additional_medical_examination')
+        {
+            if ($tariff->get_additional_health_examination_by_doctor() != 'no') {
+                $this->output($this->helper->compare_icon($tariff->get_additional_health_examination_by_doctor(), 'yes'), false);
+                $this->output(
+                    $this->area['mapping'][$tariff->get_additional_health_examination_by_doctor()]
+                    . ' ' .
+                    $tariff->get_additional_health_examination_by_doctor_comment()
+                );
+            } else {
+                $this->output($this->helper->compare_icon($tariff->get_additional_health_examination_by_doctor(), 'yes'), false);
+                $this->output($tariff->get_additional_health_examination_by_doctor_comment());
+            }
+        }
+
+        // print text only
+        else {
+            if(isset($this->area['mapping'])) {
+                $this->output($this->area['mapping'][$tariff->{$this->area['method']}()]);
+            } else {
+                $this->output($tariff->{$this->area['method']}());
+            }
+        }
+?></div>
+<?php endforeach; ?>

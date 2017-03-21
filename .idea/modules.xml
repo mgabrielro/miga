@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/miga.iml" filepath="$PROJECT_DIR$/.idea/miga.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/miga-core.iml" filepath="$PROJECT_DIR$/.idea/miga-core.iml" />
     </modules>
   </component>

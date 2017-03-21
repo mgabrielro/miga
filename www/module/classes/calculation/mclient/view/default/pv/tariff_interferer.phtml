@@ -1,0 +1,27 @@
+<?php
+$prof_boolean = in_array($profession, explode('_', $this->tariff->get_tariff_interferer_profession()));
+$insured_person_boolean = in_array($insured_person, explode('_', $this->tariff->get_tariff_interferer_profession()));
+
+if ($this->tariff->get_tariff_interferer() == 'yes' && (($prof_boolean && $insured_person == 'adult') ||
+    $this->tariff->get_tariff_interferer_profession() == 'all' || $insured_person_boolean)) {
+    ?>
+    <div class="c24-interferer-wrapper">
+        <div class="c24-interferer-text-wrapper">
+            <div class="c24-interferer-text"></div><?php echo $this->tariff->get_tariff_interferer_text(); ?>
+            <div class="c24-interferer-info"></div>
+        </div>
+        <div class="c24-content-row-block-infobox">
+            <div class="c24-content-row-info-text">
+                <div class="arrow_top"></div>
+                <div class="c24-content-row-info-text-content">
+                    <strong><?php echo $this->tariff->get_tariff_interferer_tooltip_title(); ?></strong>
+                    <p><?php echo $this->tariff->get_tariff_interferer_tooltip_text(); ?></p>
+                </div>
+                <div class="c24-info-close-row"><i class="fa fa-angle-up"></i></div>
+            </div>
+        </div>
+    </div>
+<?php
+}
+
+?>

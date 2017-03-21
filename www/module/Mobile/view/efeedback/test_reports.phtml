@@ -1,0 +1,14 @@
+<?php if(!empty($tests)): ?>
+    <?php foreach ($tests AS $test): ?>
+        <div class="c24-efeedbacktest">
+            <div class="c24-efeedbacktest-text">
+                <h1><?php echo strip_tags($test->title) ?></h1>
+                <h2><?php echo strip_tags($test->date) ?></h2>
+                <img src="<?php echo $test->logo(rs_is_ssl()) ?>">
+                <?php echo strip_tags($test->text, '<p><a>') ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Für den aktuellen Tarif sind keine Testberichte vorhanden.</p>
+<?php endif; ?>

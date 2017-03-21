@@ -1,0 +1,220 @@
+<?php
+/** @var \classes\calculation\client\model\tariff\pkv      $tariff1['details'] */
+/** @var \classes\calculation\mclient\model\parameter\pkv   $tariff1['parameter'] */
+/** @var \classes\tracking\generaltracking $this->generaltracking_pixel */
+
+use \classes\calculation\client\model\parameter\pkv;
+
+$tariff1 = $this->tariffs[1];
+$tariff2 = isset($this->tariffs[2]) ? $this->tariffs[2] : null;
+
+$promotion1 = $tariff1['details']->is_promo_tariff(true);
+$promotion2 = $tariff2['details']->is_promo_tariff(true);
+
+
+$is_child = $tariff1['parameter']->get_insured_person() === pkv::INSURED_PERSON_CHILD;
+$is_employee = $tariff1['parameter']->get_profession() === pkv::PROFESSION_EMPLOYEE;
+
+$could_save = false;
+
+if( $is_employee && !$is_child ) {
+    //tariff1_saved and tariff2_saved
+    if(($tariff1['details']->get_paymentperiod_size_net_saving() > 0) ||
+        ($tariff2['details']->get_paymentperiod_size_net_saving() > 0)) {
+        $could_save = true;
+    }
+}
+
+?>
+
+<table class="compare compare-header <?php echo ($promotion1 || $promotion2) ? 'is_promo' : '' ?> <?php echo
+$could_save ? 'could_save' : '' ?>">
+    <thead>
+    <tr>
+        <th class="<?php echo (!$promotion1) ? 'no_promo' : '' ?>">
+            <div class="header">
+                <?php if ($promotion1) :
+                    $promotion_title = $tariff1['details']->get_tariff_promotion_bin($tariff1['parameter']->get_profession());?>
+                    <div class="c24-promo-banner c24-compare-promo-wrapper c24-clearfix">
+                        <div class="c24-compare-promo-div">
+                           <?php echo ($promotion_title) ?  $promotion_title : ''; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="remove"><a class="remove_tariff" target="_blank" data-keep="<?php echo $tariff2 ? $tariff2['details']->get_tariff_version_id() : ''; ?>" href="<?php echo $this->url('mobile/pkv/result');?>"></a></div>
+                <div class="logo c24-clearfix"><img src="<?php echo $tariff1['details']->get_provider_logo(); ?>" /></div>
+            </div><!--header-->
+            <div class="body">
+                <div class="tariff_name">
+                    <ul class='c24-result-tariff-name-list'>
+                        <li class="c24-result-tariff-name-list-content">
+                        <?php
+                            echo 'Tarif: ' . $this->tariffnameFormater($tariff1['details']->get_tariff_name());
+                        ?>
+                        </li>
+                        <?php
+                            $icon = $this->partial('mclient/view/default/pkv/tariff_name_tooltip_partial.php',[
+                                'title'   => 'Tarifbausteine',
+                                'content' => $this->tariffnameFormater($tariff1['details']->get_tariff_name())
+                            ]);
+                        ?>
+                        <div class="tooltip-wrapper"><?php echo $icon ?></div>
+                    </ul>
+                </div>
+
+            <?php echo $this->partial('partials/price/compare.phtml', ['tariff' => $tariff1['details'], 'parameter' => $tariff1['parameter']]); ?>
+
+            </div>
+            <div class="footer">
+                <a class="c24-button-plain-blue" data-ajax="false" href="<?php echo $this->url('mobile/pkv/tariffdetail', [], ['query' => [
+                    'c24api_tariffversion_id' => $tariff1['details']->get_tariff_version_id(),
+                    'c24api_calculationparameter_id' => $tariff1['parameter']->get_id(),
+                    'c24api_tariffversion_variation_key' => 'base',
+                    'c24_controller' => \classes\calculation\mclient\controller\pkv\tariff_detail::DEFAULT_CONTROLLER,
+                    'c24_promotion_type' => $tariff1['details']->get_promotion_type(),
+                    'c24_is_gold_grade' => $tariff1['details']->is_gold_grade()
+                    ]]);?>">weiter</a>
+
+                <?php echo $this->partial('partials/grade.phtml',  ['tariff' => $tariff1['details'], 'parameter' => $tariff1['parameter']]); ?>
+            </div>
+        </th>
+
+        <th class="<?php echo (!$promotion2) ? 'no_promo' : '' ?>">
+            <div class="header">
+            <?php if ($tariff2): ?>
+                <?php if ($promotion2) :
+                    $promotion_title = $tariff2['details']->get_tariff_promotion_bin($tariff2['parameter']->get_profession());?>
+                    <div class="c24-promo-banner c24-compare-promo-wrapper c24-clearfix">
+                        <div class="c24-compare-promo-div">
+                            <?php echo ($promotion_title) ?  $promotion_title : ''; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="remove"><a class="remove_tariff" target="_blank" data-keep="<?php echo $tariff1['details']->get_tariff_version_id();?>" href="<?php echo $this->url('mobile/pkv/result');?>"></a></div>
+                <div class="logo c24-clearfix"><img src="<?php echo $tariff2['details']->get_provider_logo(); ?>" /></div>
+            </div>
+            <div class="body">
+                <div class="tariff_name">
+                    <ul class='c24-result-tariff-name-list'>
+                        <li class="c24-result-tariff-name-list-content">
+                        <?php
+                            echo 'Tarif: ' . $this->tariffnameFormater($tariff2['details']->get_tariff_name());
+                        ?>
+                        </li>
+                        <?php
+                            $icon = $this->partial('mclient/view/default/pkv/tariff_name_tooltip_partial.php',[
+                                'title'   => 'Tarifbausteine',
+                                'content' => $this->tariffnameFormater($tariff2['details']->get_tariff_name())
+                            ]);
+                        ?>
+                        <div class="tooltip-wrapper"><?php echo $icon ?></div>
+                    </ul>
+                </div>
+                <?php echo $this->partial('partials/price/compare.phtml', ['tariff' => $tariff2['details'], 'parameter' => $tariff1['parameter']]); ?>
+            </div>
+
+            <div class="footer">
+                <a class="c24-button-plain-blue" data-ajax="false" href="<?php echo $this->url('mobile/pkv/tariffdetail', [], ['query' => [
+                    'c24api_tariffversion_id' => $tariff2['details']->get_tariff_version_id(),
+                    'c24api_calculationparameter_id' => $tariff2['parameter']->get_id(),
+                    'c24api_tariffversion_variation_key' => 'base',
+                    'c24_promotion_type' => $tariff2['details']->get_promotion_type(),
+                    'c24_is_gold_grade' => $tariff2['details']->is_gold_grade()
+                ]]);?>">weiter</a>
+
+                <?php echo $this->partial('partials/grade.phtml',  ['tariff' => $tariff2['details'], 'parameter' => $tariff1['parameter']]); ?>
+            </div>
+            <?php endif; ?>
+        </th>
+    </tr>
+    </thead>
+</table>
+
+<table class="compare compare-body">
+    <?php foreach ($tariff1['features'] as $groupKey => $group): ?>
+        <tbody class="group">
+        <tr>
+            <th colspan="2">
+                <?php echo $this->escapeHtml($group['name']); ?>
+            </th>
+        </tr>
+        </tbody>
+
+        <tbody>
+            <?php foreach ($group['children'] as $featureKey => $feature): ?>
+                <tr>
+                    <th colspan="2">
+                        <?php if (!empty($feature['tooltip_feature'])): ?>
+                            <div class="tariff_feature_info_icon">?</div>
+                        <?php endif; ?>
+
+                        <?php echo $this->escapeHtml($feature['name']); ?>
+
+                        <?php if (!empty($feature['tooltip_feature'])): ?>
+                            <div class="c24-content-row-block-infobox">
+                                <div class="c24-content-row-info-text">
+                                    <div class="c24-content-row-info-text-content"><?php echo $feature['tooltip_feature'];?></div>
+                                    <div class="c24-info-close-row"><i class="fa fa-angle-up"></i></div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </th>
+                </tr>
+                <tr>
+                    <td><?php echo $this->tariff_feature($tariff1['features'][$groupKey]['children'][$featureKey]['comment']); ?></td>
+                    <td>
+                        <?php if (!empty($tariff1['features'][$groupKey]['children'][$featureKey]['comment'])): ?>
+                        <?php echo $this->tariff_feature($tariff2['features'][$groupKey]['children'][$featureKey]['comment']); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    <?php endforeach; ?>
+
+    <tbody class="group">
+        <tr>
+            <td>
+                <a class="c24-button-plain-blue" data-ajax="false" href="<?php echo $this->url('mobile/pkv/tariffdetail', [], ['query' => [
+                    'c24api_tariffversion_id' => $tariff1['details']->get_tariff_version_id(),
+                    'c24api_calculationparameter_id' => $tariff1['parameter']->get_id(),
+                    'c24api_tariffversion_variation_key' => 'base',
+                    'c24_promotion_type' => $tariff1['details']->get_promotion_type(),
+                    'c24_is_gold_grade' => $tariff1['details']->is_gold_grade()
+                ]]);?>">weiter</a>
+            </td>
+            <td>
+                <?php if ($tariff2): ?>
+                <a class="c24-button-plain-blue" data-ajax="false" href="<?php echo $this->url('mobile/pkv/tariffdetail', [], ['query' => [
+                    'c24api_tariffversion_id' => $tariff2['details']->get_tariff_version_id(),
+                    'c24api_calculationparameter_id' => $tariff2['parameter']->get_id(),
+                    'c24api_tariffversion_variation_key' => 'base',
+                    'c24_promotion_type' => $tariff2['details']->get_promotion_type(),
+                    'c24_is_gold_grade' => $tariff2['details']->is_gold_grade()
+                ]]);?>">weiter</a>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="tel_footer">
+    <div class="tel_headline">
+        Haben Sie Fragen?
+    </div>
+    <div class="tel_number">
+        <img src="/massets/images/telefon.png" />
+        <a class="tel_number_click" href="tel:08924241272">089 -24 24 12 72</a>
+    </div>
+    <div class="tel_reachable">
+        Mo. bis So. 8:00 - 20:00
+    </div>
+    <div class="back_to_top" onclick="window.scrollTo(0,0);">
+        <img src="/massets/images/layout/dropdown_arrow.png" />
+        <p>zum Seitenanfang</p>
+    </div>
+</div>
+<?php echo $this->generaltracking_pv->render(); ?>
+<?php echo $this->generaltracking_pkv->render(); ?>
+<?php echo $this->piwik($this->piwik['page'], $this->piwik['vars']); ?>
+<?php echo $this->google_tag_manager($this->piwik['page']); ?>

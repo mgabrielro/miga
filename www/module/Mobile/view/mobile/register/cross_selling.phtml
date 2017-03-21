@@ -1,0 +1,52 @@
+<section class="additional-compare">
+    <header>Weitere Sparangebote für Sie</header>
+
+    <div id="c24-crossselling-container-cct1">
+        <div class="c24-teaser"></div>
+    </div>
+    <div id="c24-crossselling-container-cct2">
+        <div class="c24-teaser"></div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    <?php
+
+    if (!empty($lead)) :?>
+
+    /*<[CDATA[*/
+    var cct1_data = {
+        hideUnused : true,
+        hideOnError : true,
+        frameContent : true,
+        version : 2,
+        customer: {
+            cseplan_id: <?php echo  $this->escapeHtml(get_def('products/' .$lead['product_id']. '/cseplan_id/offer1')); ?>,
+            gender: '<?php echo $this->escapeHtml($lead['gender']); ?>',
+            firstname: '<?php echo $this->escapeHtml($lead['firstname']); ?>',
+            lastname: '<?php echo $this->escapeHtml($lead['lastname']); ?>',
+            birthday: '<?php echo $this->escapeHtml($lead['birthdate']); ?>',
+            email: '<?php echo $this->escapeHtml($lead['email']); ?>',
+            user_id: '<?php echo $this->escapeHtml($lead['c24login_user_id']); ?>',
+            user_anonymous: '<?php echo $this->escapeHtml($lead['c24login_type'] !== 'none' ? 'no' : 'yes'); ?>',
+            product_excludes: ['bu']
+        },
+        auth: {
+            product: '<?php echo $this->escapeHtml(get_def('products/'.$lead['product_id'].'/key')); ?>',
+            lead_id: <?php echo $this->escapeHtml($lead['id']); ?>,
+            hash: '<?php echo sha1(get_def('products/'.$lead['product_id'].'/key') . $lead['id'] . get_def('products/'.$lead['product_id'].'/cct_secret')) ?>'
+        },
+        replacements: {
+            zipcode: '<?php echo $this->escapeHtml($lead['zipcode']); ?>',
+            areacode: '<?php echo $this->escapeHtml($lead['phoneprefix']); ?>'
+        }
+    };
+
+    var cct2_data = {};
+
+    /*]}>*/
+    <?php endif;?>
+
+
+</script>

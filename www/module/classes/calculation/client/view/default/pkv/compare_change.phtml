@@ -1,0 +1,17 @@
+<section class="c24-compare-border-bottom">
+    <article>
+        <div>Tarif wählen</div>
+        <div><a class="c24-button" id="tariff_change_1" data-column-id="1"> Tarif ändern</a></div>
+
+        <?php if($this->selected_keys_count > 1): ?>
+            <div><a class="c24-button" id="tariff_change_2" data-column-id="2"> Tarif ändern</a></div>
+        <?php endif; ?>
+
+        <?php if($this->selected_keys_count === 3): ?>
+            <div>
+                <a class="c24-button prevResult disabled">« vorheriger</a>
+                <a class="c24-button nextResult">nächster »</a>
+            </div>
+        <?php endif; ?>
+    </article>
+</section>

@@ -1,0 +1,69 @@
+<?php // special action container
+
+// show the tariff special action
+
+    if (
+        !empty($this->tariff) &&
+        $this->tariff->has_special_action_running() &&
+        empty($special_action_hide_ribbon)
+    ) {
+
+        $valid_to_date = date('d.m', strtotime($this->tariff->get_special_action()['valid_to']));
+        $valid_to_date_full = date('d.m.Y', strtotime($this->tariff->get_special_action()['valid_to']));;
+        $free_months = $this->tariff->get_special_action()['max_free_months'];
+        $max_voucher_value = $this->tariff->get_special_action()['max_voucher_value'];
+        $monate_text = ($free_months) > 1 ? 'Monate' : 'Monat';
+        $action_red_label = $free_months . ' ' . $monate_text . ' gratis';
+        $action_grey_label = '(nur bis ' . $valid_to_date . ')';
+
+        $action_tooltip = '<b>Bis zum ' . $valid_to_date . ' – exklusiv nur bei CHECK24: ' . $free_months . ' Monate gratis</b>
+        <div class="exclusiv_list" >
+            <ul>
+                <li>
+                    <b>Hinweis zur Auszahlung:</b><br />
+                    <ul>
+                        <li>Die Versicherung wird Ihnen den Beitrag normal abbuchen.</li>
+                        <li>Sie erhalten den Gegenwert der <br>„' . $action_red_label . '“ Aktion als Cashback auf
+                            die im Antrag angegebene Kontoverbindung direkt von Check24 gutgeschrieben
+                            (ca. 6 Wochen nach Zustandekommen des Vertrags), jedoch maximal ' . $max_voucher_value . ' € pro Vertrag.</li>
+                    </ul>
+                </li>
+                <li><b>Wichtige Bedingungen für die Auszahlung:</b><br />
+                    <ul>
+                        <li>Der Antrag muss bei Check24 bis zum ' . $valid_to_date_full . ' eingehen.</li>
+                        <li>Der Versicherungsvertrag muss policiert sein und darf nicht in der
+                            14-tägigen Widerrufsfrist widerrufen werden.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>';
+
+        echo '<div class="c24-content-row c24-content-row-info action_banner" id="c24-special-action-container">
+            <div class="c24-content-row-block">
+                <div class="c24-content-row-info-content c24-input-content">
+
+                    <div class="c24-content-row-info-icon js-c24-info-icon" >
+                        <div class="c24-info-icon"><span></span></div>
+                    </div>
+                    <div class="special_action_banner">
+                        <div class="action_text">
+                            <b>' . $action_red_label . '</b>
+                            ' . $action_grey_label . '
+                        </div>
+                    </div></div>
+            </div>
+            <div class="c24-content-row-block-infobox" style="display: none;">
+                <div class="c24-content-row-info-text">
+                    <div class="c24-content-row-info-text-content">
+                        ' . $action_tooltip . '
+                    </div>
+                    <div class="c24-info-close-row">
+                        <i class="fa fa-angle-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>';
+
+    }
+
+    // special action END --

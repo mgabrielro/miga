@@ -1,0 +1,12 @@
+<?php
+$overall_rating = $this->rating_overview()->overview($this->tariff->get_feedback_provider_id());
+?>
+
+<?php if (null !== $overall_rating && $overall_rating->is_significant) : ?>
+    <?php echo $this->stars()->render($overall_rating->avg_stars); ?>
+    <div><b><?php $this->output($overall_rating->avg_stars); ?></b> von <b>5 Sternen</b></div>
+    <div>(<?php $this->output($overall_rating->total_ratings) ?> Bewertungen)</div>
+<?php else: ?>
+    <div class="stars star0"></div>
+    <div class="disabled">Keine Bewertungen</div>
+<?php endif; ?>

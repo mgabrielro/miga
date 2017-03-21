@@ -1,0 +1,21 @@
+<table class="table star-table">
+    <tbody>
+    <?php foreach ($star_rows as $stars => $data): ?>
+        <tr data-star="<?php echo $stars; ?>">
+            <td><span class="star-table-key-column"><?php echo $stars; ?> Sterne</span></td>
+            <td class="progress-bar-column">
+                <div class="row ng-isolate-scope" width="<?php echo $data['percent'] ?>" hide-percentage="true">
+                    <div class="col-xs-12 progress">
+                        <div data-percentage="0%"
+                             style="width:<?php echo $data['percent'] ?>%"
+                             class="progress-bar progress-bar-success"
+                             role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="star-table-value-column ng-binding"><?php echo $data['count'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

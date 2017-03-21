@@ -1,0 +1,36 @@
+<?php
+    echo $this->form()->openTag($form);
+?>
+
+<div class="c24-form-start">
+
+    <div class="c24-form-element-group">
+
+        <span class="c24-register-infotext">Anmelden und sparen</span>
+
+        <div class="c24-form-element-center" id="c24-register-c24login-types">
+
+            <a href="<?php echo $form->getAttribute('action'); ?>?type=login" class="c24-button-plain-blue">
+                <div class="c24-button-dot"></div>
+                ich bin CHECK24 Kunde
+            </a>
+
+            <a href="<?php echo $form->getAttribute('action'); ?>?type=register" class="c24-button-plain-blue">
+                <div class="c24-button-dot"></div>
+                CHECK24 Kunde werden
+            </a>
+
+            <a href="<?php echo $form->getAttribute('action'); ?>?type=none" class="c24-button-plain-blue">
+                <div class="c24-button-dot"></div>
+                als Gast fortfahren
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php
+    echo $this->form()->closeTag();
+?>
