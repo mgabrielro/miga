@@ -2,7 +2,6 @@
 
 namespace Product;
 
-// Add these import statements:
 use Product\Model\Product;
 use Product\Model\ProductTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -39,7 +38,6 @@ class Module
         );
     }
 
-    // Add this method:
     public function getServiceConfig()
     {
         return array(

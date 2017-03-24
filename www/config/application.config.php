@@ -12,8 +12,9 @@ $environment = getenv('APPLICATION_ENV');
  * Enabled Modules
  */
 $modules = [
-    'Album',
     'Application',
+    'Blog',
+    'Album',
     'Product',
 ];
 
