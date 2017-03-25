@@ -15,7 +15,7 @@ $modules = [
     'Application',
     'Blog',
     //'Album',
-    //'Product',
+    'Product',
 ];
 
 /*

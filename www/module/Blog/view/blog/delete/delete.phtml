@@ -1,0 +1,8 @@
+<h3>
+    Are you sure that you want to delete this post:
+    '<?php echo $this->escapeHtml($this->post->getTitle()); ?>' ?
+</h3>
+<form action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
+    <input class="btn btn-primary" type="submit" name="delete_confirmation" value="yes">
+    <input class="btn btn-danger" type="submit" name="delete_confirmation" value="no">
+</form>

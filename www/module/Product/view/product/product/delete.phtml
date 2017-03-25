@@ -1,0 +1,12 @@
+CREATE TABLE `product` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `category_id` int(11) NOT NULL,
+    `supplier_id` int(11) NOT NULL,
+    `name` varchar(150) NOT NULL,
+    `description` text NOT NULL,
+    `created` datetime NOT NULL,
+    `updated` datetime NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (category_id) REFERENCES Category(id),
+    FOREIGN KEY (supplier_id) REFERENCES Supplier(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
