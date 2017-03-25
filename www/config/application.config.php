@@ -14,18 +14,18 @@ $environment = getenv('APPLICATION_ENV');
 $modules = [
     'Application',
     'Blog',
-    'Album',
-    'Product',
+    //'Album',
+    //'Product',
 ];
 
 /*
  * Either load the ErrorHandler module (which converts catchable errors into Exceptions)
  * or load the Zf2Whoops module (when in development mode)
  */
-if ($environment === 'development') {
+/*if ($environment === 'development') {
     $modules[] = 'Zf2Whoops';
     $modules[] = 'ZFTool';
-}
+}*/
 
 /**
  * Zend Module Configuration
