@@ -13,19 +13,17 @@ $environment = getenv('APPLICATION_ENV');
  */
 $modules = [
     'Application',
-    'Blog',
-    //'Album',
-    'Product',
+    'Base'
 ];
 
 /*
  * Either load the ErrorHandler module (which converts catchable errors into Exceptions)
  * or load the Zf2Whoops module (when in development mode)
  */
-/*if ($environment === 'development') {
+if ($environment === 'development') {
     $modules[] = 'Zf2Whoops';
     $modules[] = 'ZFTool';
-}*/
+}
 
 /**
  * Zend Module Configuration
@@ -60,7 +58,7 @@ $config = array(
                 return new Sendmail();
             }
         )
-    )
+    ),
 
 );
 
